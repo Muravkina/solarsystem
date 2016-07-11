@@ -1,5 +1,6 @@
 var sun = {
 	diameter: 864938,
+	diameterRatio: 109,
 	distanceFromEarth: 156,
 	distanceFromSun: 0,
 	gravitationalFactor: 27.9
@@ -11,6 +12,7 @@ var sun = {
 
 var mercury = {
 	diameter: 3032,
+	diameterRatio: 0.383,
 	lengthOfDay: 4222.6,
 	distanceFromSun: 36000000,
 	distanceFromEarth: 147,
@@ -21,6 +23,7 @@ var mercury = {
 
 var venus = {
 	diameter: 7521,
+	diameterRatio: 0.949,
 	lengthOfDay: 2802, 
 	distanceFromSun: 67200000,
 	distanceFromEarth: 456,
@@ -30,6 +33,7 @@ var venus = {
 
 var moon = {
 	diameter: 2159,
+	diameterRatio: 0.2724,
 	lengthOfDay: 708.7
 	distanceFromEarth: 3,
 	shuttleTraveled: 'Apollo 11',
@@ -38,6 +42,7 @@ var moon = {
 
 var earth = {
 	diameter: 7926,
+	diameterRatio: 1,
 	lengthOfDay: 24,
 	distanceFromEarth: 0,
 	shuttleTraveled: '',
@@ -47,6 +52,7 @@ var earth = {
 
 var mars = {
 	diameter: 4221,
+	diameterRatio: 0.532,
 	lengthOfDay: 24.7,
 	distanceFromSun: 141600000,
 	distanceFromEarth: 213,
@@ -56,6 +62,7 @@ var mars = {
 
 var jupiter = {
 	diameter: 88846,
+	diameterRatio: 11.21,
 	lengthOfDay: 9.9,
 	distanceFromSun: 483800000,
 	distanceFromEarth: 1825,
@@ -65,6 +72,7 @@ var jupiter = {
 
 var saturn = {
 	diameter: 74897,
+	diameterRatio: 9.45,
 	lengthOfDay: 10.7,
 	distanceFromSun: 890800000,
 	distanceFromEarth: 2555,
@@ -74,6 +82,7 @@ var saturn = {
 
 var uranus = {
 	diameter: 31763,
+	diameterRatio: 4.01,
 	lengthOfDay: 17.2,
 	distanceFromSun: 1784800000,
 	distanceFromEarth: 3103,
@@ -83,6 +92,7 @@ var uranus = {
 
 var neptune = {
 	diameter: 30775,
+	diameterRatio: 3.88,
 	lengthOfDay: 16.1,
 	distanceFromSun: 2793100000,
 	distanceFromEarth: 4380,
@@ -92,6 +102,7 @@ var neptune = {
 
 var pluto = {
 	diameter: 1464,
+	diameterRatio: 0.186,
 	lengthOfDay: 153.3,
 	distanceFromSun: 3670000000,
 	distanceFromEarth: 3468,
