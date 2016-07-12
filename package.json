@@ -5,7 +5,7 @@
   "author": "Cássio Zen",
   "license": "ISC",
   "scripts": {
-    "start": "webpack-dev-server --progress",
+    "start": "webpack-dev-server --progress --port 8080 --host 192.168.0.5",
     "build": "NODE_ENV=production node_modules/.bin/webpack -p --progress --colors"
   },
   "devDependencies": {

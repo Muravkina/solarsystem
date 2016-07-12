@@ -34,7 +34,7 @@ var venus = {
 var moon = {
 	diameter: 2159,
 	diameterRatio: 0.2724,
-	lengthOfDay: 708.7
+	lengthOfDay: 708.7,
 	distanceFromEarth: 3,
 	shuttleTraveled: 'Apollo 11',
 	gravitationalFactor: 0.166

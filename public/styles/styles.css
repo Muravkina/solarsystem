@@ -1,0 +1,52 @@
+@font-face {
+    font-family: Mohave;
+    src: url(../fonts/Mohave.otf);
+}
+
+@font-face {
+    font-family: Aleo;
+    src: url(../fonts/Aleo-Regular.ttf);
+}
+
+/*BODY*/
+
+body, html {
+	background-image: url('../images/sky1.jpg');
+	background-repeat: repeat;
+	background-position: 0% 0%;
+	color: rgb(255, 255, 255);	
+	-webkit-font-smoothing: antialiased;
+}
+
+/*FRONT CARD*/
+
+section.front_card {
+	font-family: Mohave, sans-serif;
+	font-size: 20px;
+}
+
+section.front_card h1 {
+	font-size: 6em;
+	margin: 0.5em;
+	text-shadow: 5px 3px 0px rgba(6, 6, 6, 0.75);
+}
+
+section.front_card p {
+	font-size: 2em;
+    margin-left: 2em;
+    transform: scale(1.1, 0.9);
+    display: inline-block;
+    margin-top: 0;
+    word-spacing: 0.05em;
+}
+
+section.front_card p span {
+	font-size: 1.5em;
+	margin: 0 0.2em;
+}
+
+section.front_card .scrolling_direction p{
+	font-size: 1em;
+	margin-left: 3.5em;
+}
+
