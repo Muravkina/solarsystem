@@ -9,7 +9,7 @@ class Solar extends Component {
    //  		return (<li>{item.diameter}</li>)
    //  	})
     return(
-
+    	<div></div>
     );
   }
 }
