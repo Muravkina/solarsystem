@@ -14,20 +14,23 @@ body, html {
 	background-image: url('../images/sky1.jpg');
 	background-repeat: repeat;
 	background-position: 0% 0%;
-	color: rgb(255, 255, 255);	
+	color: rgb(255, 255, 255);
 	-webkit-font-smoothing: antialiased;
+  height: 100vh;
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: scroll;
 }
 
 /*STAR OVERLAY*/
 
 .overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
 	z-index: 0;
-	width: 100%;
+	width: auto;
 	height: 100%;
-	overflow: hidden;
+  background-image: url('../images/sky2.png');
+  background-repeat: repeat-x;
+  display: inline-block;
 }
 
 .overlay img {
@@ -38,6 +41,7 @@ body, html {
 
 section.front_card {
 	position: relative;
+  display: inline-block;
 	font-family: Mohave, sans-serif;
 	font-size: 20px;
 	z-index: 1;
@@ -69,7 +73,18 @@ section.front_card .scrolling_direction p{
 	margin-left: 3.5em;
 }
 
-#root {
-	height: 5000px
+
+/*PLANETS*/
+#root, .solar_system_wrap, .planet {
+  display: inline-block;
+  position: relative;
+  top: -150px;
+  white-space: nowrap;
 }
 
+.solar_system_wrap img {
+  z-index: 1;
+  position: relative;
+  width: 50px;
+  margin-left: 11178px;
+}
