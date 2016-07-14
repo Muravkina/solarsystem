@@ -78,7 +78,6 @@ section.front_card .scrolling_direction p{
 #root, .solar_system_wrap, .planet {
   display: inline-block;
   position: relative;
-  top: -150px;
   white-space: nowrap;
 }
 
@@ -88,3 +87,5 @@ section.front_card .scrolling_direction p{
   width: 50px;
  /* margin-left: 11178px;*/
 }
+
+/*INDIVIDUAL PLANET*/
