@@ -44,6 +44,7 @@ var moon = {
 	diameterRatio: 0.2724,
 	lengthOfDay: 708.7,
 	distanceFromEarth: 3,
+	distanceFromSun: 92761000,
 	shuttleTraveled: 'Apollo 11',
 	gravitationalFactor: 0.166
 }

@@ -6,16 +6,23 @@ class Solar extends Component {
   constructor(){
     super();
     this.state = {
+        width: 0,
         marginLeft:0
     }
   }
   render() {
+    var prevDistanceFromSun = 0;
+
   	var planets = solarSystem.map((planet , i) => {
-  		// var image = "images/" + planet.name.toLowerCase() + '.png'
-    		return (
-              // Planet props
-              <Planet key={i} planet={planet} distanceToSun={this.state.marginLeft}/>
-              )
+
+      //calculate the distance between planets
+    	var marginLeft = (planet.distanceFromSun - prevDistanceFromSun) ;
+      prevDistanceFromSun = planet.distanceFromSun;
+
+    	return (
+        // Planet props
+        <Planet key={i} planet={planet} marginLeft={marginLeft}/>
+        )
     	})
     return(
     	<div className='solar_system_wrap'>{planets}</div>
@@ -27,12 +34,13 @@ class Solar extends Component {
 class Planet extends Component {
   render() {
     var divStyle = {
-      left: this.props.distanceToSun
+      //80.65 - arbitrary coeffcient to scale the width and distances;
+      marginLeft: this.props.marginLeft / 80.65,
     }
     return (
       <div className={`planet ${this.props.planet.name}`} style={divStyle} >
         <h1>{this.props.planet.name}</h1>
-        <Image name={this.props.planet} />
+        <Image planet={this.props.planet} />
         <Description planet={this.props.planet} />
       </div>
     );
@@ -55,8 +63,15 @@ class Description extends Component {
 class Image extends Component {
   //if moon - different position
   render() {
+    //80.65 - arbitrary coeffcient to scale the width of the planets;
+    var divStyle = {
+      width: this.props.planet.diameterRatio * 80.65,
+      backgroundImage: `url(images/${this.props.planet.name}.png)`
+    }
     return (
-      <div></div>
+      <div className={`${this.props.planet.name} wrap`} style={divStyle}>
+        
+      </div>
     );
   }
 }

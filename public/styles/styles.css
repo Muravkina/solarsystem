@@ -81,11 +81,20 @@ section.front_card .scrolling_direction p{
   white-space: nowrap;
 }
 
-.solar_system_wrap img {
-  z-index: 1;
-  position: relative;
-  width: 50px;
- /* margin-left: 11178px;*/
-}
 
 /*INDIVIDUAL PLANET*/
+
+.planet {
+  z-index: 1;
+  position: relative;
+}
+
+.planet .wrap {
+  height: 100vh;
+  overflow: auto;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
+  position: relative;
+}
+
