@@ -22,13 +22,15 @@ class Solar extends Component {
     );
   }
 }
+
+
 class Planet extends Component {
   render() {
     var divStyle = {
       left: this.props.distanceToSun
     }
     return (
-      <div className='planet' className={this.props.planet.name} style={divStyle} >
+      <div className={`planet ${this.props.planet.name}`} style={divStyle} >
         <h1>{this.props.planet.name}</h1>
         <Image name={this.props.planet} />
         <Description planet={this.props.planet} />
@@ -36,6 +38,7 @@ class Planet extends Component {
     );
   }
 }
+
 
 class Description extends Component {
   // initial state = info
@@ -47,6 +50,8 @@ class Description extends Component {
   }
 }
 
+
+
 class Image extends Component {
   //if moon - different position
   render() {
@@ -55,4 +60,6 @@ class Image extends Component {
     );
   }
 }
+
+
 render(<Solar />, document.getElementById('root'));
