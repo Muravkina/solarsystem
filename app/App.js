@@ -6,24 +6,16 @@ class Solar extends Component {
   constructor(){
     super();
     this.state = {
-        width: 7,
-        marginLeft:8
+        width: 0,
+        marginLeft:0
     }
   }
   render() {
   	var planets = solarSystem.map((planet) => {
-  		var image = "images/" + planet.image
-    		return (<div className='planet'>
-                  <h1>{planet.name}</h1>
-                  <img src= {image}/>
-                  <div className="description">
-                    <ul>
-                      <li>{planet.diameter}</li>
-                      <li>{planet.lengthOfDay}</li>
-                      <li>{planet.distanceFromEarth} {planet.shuttleTraveled}</li>
-                    </ul>
-                  </div>
-                </div>
+  		// var image = "images/" + planet.name.toLowerCase() + '.png'
+    		return (
+              // Planet props
+              <Planet planet={planet} />
               )
     	})
     return(
@@ -31,11 +23,32 @@ class Solar extends Component {
     );
   }
 }
-class Description extends Component {
-
+class Planet extends Component {
+  render() {
+    console.log(this.props)
+    return (
+      <div></div>
+    );
+  }
 }
 
-class Image extends Components {
+// class Description extends Component {
+//   initial state = info
+//   //if state changes (once someone clicked on it - the state should change)
+//   render() {
+//     return (
+//       <p>Info</p>
+//       <div></div>
+//     );
+//   }
+// }
 
-}
+// class Image extends Components{
+//   //if moon - different position
+//   render() {
+//     return (
+//       <img width>
+//     );
+//   }
+// }
 render(<Solar />, document.getElementById('root'));

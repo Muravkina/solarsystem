@@ -5,8 +5,7 @@ var sun = {
 	diameterRatio: 109,
 	distanceFromEarth: 156,
 	distanceFromSun: 0,
-	gravitationalFactor: 27.9,
-	image: 'sun.png'
+	gravitationalFactor: 27.9
 }
 
 // diameter, distance from Sun in miles
@@ -23,8 +22,7 @@ var mercury = {
 	distanceFromEarth: 147,
 	shuttleTraveled: 'Mariner',
 	gravitationalFactor: 0.378,
-	notes: 'If you want to actually travel there, you need to slow down to its orbital speed, which takes about 6.5 years total (Messenger).',
-	image: 'mercury.svg'
+	notes: 'If you want to actually travel there, you need to slow down to its orbital speed, which takes about 6.5 years total (Messenger).'
 }
 
 var venus = {
@@ -36,8 +34,7 @@ var venus = {
 	distanceFromSun: 67200000,
 	distanceFromEarth: 456,
 	shuttleTraveled: 'Magellan',
-	gravitationalFactor: 0.907,
-	image: 'venus.svg'
+	gravitationalFactor: 0.907
 }
 
 var moon = {
@@ -48,8 +45,7 @@ var moon = {
 	lengthOfDay: 708.7,
 	distanceFromEarth: 3,
 	shuttleTraveled: 'Apollo 11',
-	gravitationalFactor: 0.166,
-	image: 'moon.svg'
+	gravitationalFactor: 0.166
 }
 
 var earth = {
@@ -61,8 +57,7 @@ var earth = {
 	distanceFromEarth: 0,
 	shuttleTraveled: '',
 	distanceFromSun: 93000000,
-	gravitationalFactor: 1,
-	image: 'earth.svg'
+	gravitationalFactor: 1
 }
 
 var mars = {
@@ -74,8 +69,7 @@ var mars = {
 	distanceFromSun: 141600000,
 	distanceFromEarth: 213,
 	shuttleTraveled: 'Opportunity',
-	gravitationalFactor: 0.377,
-	image: 'mars.svg'
+	gravitationalFactor: 0.377
 }
 
 var jupiter = {
@@ -87,8 +81,7 @@ var jupiter = {
 	distanceFromSun: 483800000,
 	distanceFromEarth: 1825,
 	shuttleTraveled: 'Juno',
-	gravitationalFactor: 2.36,
-	image: 'jupiter.svg'
+	gravitationalFactor: 2.36
 }
 
 var saturn = {
@@ -100,8 +93,7 @@ var saturn = {
 	distanceFromSun: 890800000,
 	distanceFromEarth: 2555,
 	shuttleTraveled: 'Cassini',
-	gravitationalFactor: 0.916,
-	image: 'saturn.svg'
+	gravitationalFactor: 0.916
 }
 
 var uranus = {
@@ -113,8 +105,7 @@ var uranus = {
 	distanceFromSun: 1784800000,
 	distanceFromEarth: 3103,
 	shuttleTraveled: 'Voyager',
-	gravitationalFactor: 0.889,
-	image: 'uranus.svg'
+	gravitationalFactor: 0.889
 }
 
 var neptune = {
@@ -126,8 +117,7 @@ var neptune = {
 	distanceFromSun: 2793100000,
 	distanceFromEarth: 4380,
 	shuttleTraveled: 'Voyager',
-	gravitationalFactor: 1.12,
-	image: 'neptune.svg'
+	gravitationalFactor: 1.12
 }
 
 var pluto = {
@@ -139,8 +129,7 @@ var pluto = {
 	distanceFromSun: 3670000000,
 	distanceFromEarth: 3468,
 	shuttleTraveled: 'New Horizons',
-	gravitationalFactor: 0.071,
-	image: 'pluto.svg'
+	gravitationalFactor: 0.071
 }
 
 var solarSystem = [sun, mercury, venus, moon, earth, mars, jupiter, saturn, uranus, neptune, pluto];
