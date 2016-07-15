@@ -12,20 +12,24 @@ class Solar extends Component {
   }
   render() {
     var prevDistanceFromSun = 0;
+    var planetList = [];
 
   	var planets = solarSystem.map((planet , i) => {
 
       //calculate the distance between planets
     	var marginLeft = (planet.distanceFromSun - prevDistanceFromSun) ;
       prevDistanceFromSun = planet.distanceFromSun;
+      planetList.push(planet.name);
 
     	return (
-        // Planet props
         <Planet key={i} planet={planet} marginLeft={marginLeft}/>
         )
     	})
     return(
-    	<div className='solar_system_wrap'>{planets}</div>
+      <div>
+          <PlanetsList planets={planetList} />
+    	    <div className='solar_system_wrap'>{planets}</div>
+      </div>
     );
   }
 }
@@ -73,6 +77,21 @@ class Image extends Component {
         
       </div>
     );
+  }
+}
+
+class PlanetsList extends Component {
+  render() {
+    var planets = this.props.planets.map((planet , i) => {
+      return ( <li key={i}>{planet}</li>)
+    })
+    return (
+      <div className='navbar'>
+        <ul>
+          {planets}
+        </ul>
+      </div>
+    )
   }
 }
 
