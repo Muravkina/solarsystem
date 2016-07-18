@@ -21,6 +21,7 @@ body, html {
   overflow-y: hidden;
   overflow-x: scroll;
   margin: 0;
+  width: auto !important;
 }
 
 /*STAR OVERLAY*/
