@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import {render, findDOMNode} from 'react-dom';
 import solarSystem from '../data/solar_system.js';
+import scroll from 'scroll-into-view';
+
+
+
 
 class Solar extends Component {
   constructor(){
@@ -13,22 +17,23 @@ class Solar extends Component {
 
   moveToPlanet(planet) {
     var planet = findDOMNode(this.refs[planet])
-    planet.scrollIntoView({block: 'end', behavior: 'smooth'});
+    // window.scroll(planet.getBoundingClientRect().left, 0)
+    // console.log(planet.getBoundingClientRect())
+    scroll(planet)
+    // planet.scrollIntoView({block: 'end', behavior: 'smooth'});
   }
 
+
   render() {
-    var prevDistanceFromSun = 0;
     var planetList = [];
 
   	var planets = solarSystem.map((planet , i) => {
 
-      //calculate the distance between planets
-    	var marginLeft = (planet.distanceFromSun - prevDistanceFromSun) ;
-      prevDistanceFromSun = planet.distanceFromSun;
+      //add planet's name to the array
       planetList.push(planet.name);
 
     	return (
-        <Planet key={i} planet={planet} marginLeft={marginLeft} ref={planet.name}/>
+        <Planet key={i} planet={planet} marginLeft={planet.distanceFromSun} ref={planet.name}/>
         )
     	})
     return(
@@ -45,14 +50,18 @@ class Planet extends Component {
   render() {
     var divStyle = {
       //110 - arbitrary coeffcient to scale the width and distances;
-      marginLeft: this.props.marginLeft / 110
+      left: this.props.marginLeft / 200
     }
     return (
-      <div className={`planet ${this.props.planet.name}`} style={divStyle} ref="bla">
+
+      <div className={`planet ${this.props.planet.name}`} style={divStyle}>
+
         <h1>{this.props.planet.name}</h1>
         <Image planet={this.props.planet} />
         <Description planet={this.props.planet} />
+
       </div>
+
     );
   }
 }
@@ -71,11 +80,10 @@ class Description extends Component {
 
 
 class Image extends Component {
-  //if moon - different position
   render() {
-    //110 - arbitrary coeffcient to scale the width of the planets;
+    //200 - arbitrary coeffcient to scale the width of the planets;
     var divStyle = {
-      width: this.props.planet.diameter / 110,
+      width: this.props.planet.diameter / 200,
       backgroundImage: `url(images/${this.props.planet.name}.png)`
     }
     return (
@@ -94,13 +102,13 @@ class PlanetsList extends Component {
 
   render() {
     var planets = solarSystem.map((planet , i) => {
-      return ( <li key={i} onClick={this.handleClick.bind(this)} > {planet.name} </li>)
+      return ( <a key={i}  id={planet.name} onClick={this.handleClick.bind(this)}> {planet.name} </a>)
     })
     return (
       <div className='navbar'>
-        <ul>
+
           {planets}
-        </ul>
+
       </div>
     )
   }

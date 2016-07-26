@@ -9,85 +9,94 @@
 }
 
 /*BODY*/
+body {
+  overflow-y: hidden;
+}
 
 body, html {
-	background-image: url('../images/sky1.jpg');
-	background-repeat: repeat;
-	background-position: 0% 0%;
-	color: rgb(255, 255, 255);
-	-webkit-font-smoothing: antialiased;
+  background-image: url('../images/sky1.jpg');
+  background-color: black;
+  background-repeat: repeat;
+  background-position: 0% 0%;
+  color: rgb(255, 255, 255);
+  -webkit-font-smoothing: antialiased;
   height: 100vh;
   white-space: nowrap;
-  overflow-y: hidden;
-  overflow-x: scroll;
   margin: 0;
-  width: auto !important;
+  width: 100%;
 }
 
 /*STAR OVERLAY*/
 
-.overlay {
-	z-index: 0;
-	width: auto;
-	height: 100%;
-  background-image: url('../images/sky2.png');
-  background-repeat: repeat-x;
-  display: inline-block;
-}
+/*.overlay {
+  z-index: 0;
 
+  height: 100%;
+  /*background-image: url('../images/sky2.png');*/
+/*  background-repeat: repeat-x;
+  display: inline-block;
+  width: 100%;
+  min-width: 8000000000px;*/
+  /*overflow: scroll;*/
+/*}*/
+.overlay {
+  overflow: auto;
+ /* background-clip: padding-box;*/
+}
 .overlay img {
-	width: 100%;
+  width: 100%;
 }
 
 /*FRONT CARD*/
 
 section.front_card {
-	position: relative;
+  position: relative;
   display: inline-block;
-	font-family: Mohave, sans-serif;
-	font-size: 20px;
-	z-index: 1;
+  font-family: Mohave, sans-serif;
+  font-size: 20px;
+  z-index: 1;
 }
 
 section.front_card h1 {
-	font-size: 6em;
-	margin: 0.5em;
-	text-shadow: 5px 3px 0px rgba(6, 6, 6, 0.75);
-	z-index: 1;
+  font-size: 6em;
+  margin: 0.5em;
+  text-shadow: 5px 3px 0px rgba(6, 6, 6, 0.75);
+  z-index: 1;
 }
 
 section.front_card p {
-	font-size: 2em;
-    margin-left: 2em;
-    transform: scale(1.1, 0.9);
-    display: inline-block;
-    margin-top: 0;
-    word-spacing: 0.05em;
+  font-size: 2em;
+  margin-left: 2em;
+  transform: scale(1.1, 0.9);
+  display: inline-block;
+  margin-top: 0;
+  word-spacing: 0.05em;
 }
 
 section.front_card p span {
-	font-size: 1.5em;
-	margin: 0 0.2em;
+  font-size: 1.5em;
+  margin: 0 0.2em;
 }
 
 section.front_card .scrolling_direction p{
-	font-size: 1em;
-	margin-left: 3.5em;
+  font-size: 1em;
+  margin-left: 3.5em;
 }
 
 
 /*PLANETS*/
-#root, .solar_system_wrap, .planet {
+#root, .solar_system_wrap{
   display: inline-block;
-  position: relative;
-  white-space: nowrap;
+  width: 100%;
 }
 
 
 /*INDIVIDUAL PLANET*/
 .planet {
   z-index: 1;
+  display: inline-block;
   position: relative;
+  overflow: auto;
 }
 
 .planet .wrap {
@@ -109,7 +118,7 @@ section.front_card .scrolling_direction p{
 /*NAVIGATIONAL BAR*/
 .navbar {
   position: fixed;
-  width: 100%;
+ /* width: 100%;*/
   z-index: 2;
   background-color: rgba(9, 9, 9, 0.3);
 }
@@ -117,4 +126,3 @@ section.front_card .scrolling_direction p{
 .navbar li {
   display: inline-block;
 }
-

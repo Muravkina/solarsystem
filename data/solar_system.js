@@ -8,9 +8,9 @@ var sun = {
 	gravitationalFactor: 27.9
 }
 
-// diameter, distance from Sun in miles
-//length of Day in hours
-// distance from Earth in days
+// diameter, distance from Sun  - in miles
+// length of Day - in hours
+// distance from Earth - in days
 
 var mercury = {
 	name: 'Mercury',
