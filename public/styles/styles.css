@@ -11,12 +11,12 @@
 /*BODY*/
 body {
   overflow-y: hidden;
+  overflow-x: scroll;
 }
 
 body, html {
   background-image: url('../images/sky1.jpg');
   background-color: black;
-  background-repeat: repeat;
   background-position: 0% 0%;
   color: rgb(255, 255, 255);
   -webkit-font-smoothing: antialiased;
@@ -24,25 +24,19 @@ body, html {
   white-space: nowrap;
   margin: 0;
   width: 100%;
+  /*overflow-x: scroll;*/
 }
 
 /*STAR OVERLAY*/
 
-/*.overlay {
-  z-index: 0;
-
-  height: 100%;
-  /*background-image: url('../images/sky2.png');*/
-/*  background-repeat: repeat-x;
-  display: inline-block;
-  width: 100%;
-  min-width: 8000000000px;*/
-  /*overflow: scroll;*/
-/*}*/
 .overlay {
-  overflow: auto;
- /* background-clip: padding-box;*/
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  position: fixed;
+  background-image: url('../images/sky2.png');
 }
+
 .overlay img {
   width: 100%;
 }
@@ -108,6 +102,7 @@ section.front_card .scrolling_direction p{
   position: relative;
   margin-top: 0;
   margin-bottom: 0;
+  z-index: 1;
 }
 
 .planet h1 {

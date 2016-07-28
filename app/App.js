@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {render, findDOMNode} from 'react-dom';
 import solarSystem from '../data/solar_system.js';
-import scroll from 'scroll-into-view';
+import scrollTo from 'scroll-into-view';
 
 
 
@@ -17,10 +17,7 @@ class Solar extends Component {
 
   moveToPlanet(planet) {
     var planet = findDOMNode(this.refs[planet])
-    // window.scroll(planet.getBoundingClientRect().left, 0)
-    // console.log(planet.getBoundingClientRect())
-    scroll(planet)
-    // planet.scrollIntoView({block: 'end', behavior: 'smooth'});
+    scrollTo(planet)
   }
 
 
@@ -49,7 +46,7 @@ class Solar extends Component {
 class Planet extends Component {
   render() {
     var divStyle = {
-      //110 - arbitrary coeffcient to scale the width and distances;
+      //200 - arbitrary coeffcient to scale the width and distances;
       left: this.props.marginLeft / 200
     }
     return (
