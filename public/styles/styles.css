@@ -10,6 +10,7 @@
 
 /*BODY*/
 body {
+  width: 9999999999999999999px;
   overflow-y: hidden;
   overflow-x: scroll;
 }
@@ -23,8 +24,7 @@ body, html {
   height: 100vh;
   white-space: nowrap;
   margin: 0;
-  width: 100%;
-  /*overflow-x: scroll;*/
+  overflow-x: scroll;
 }
 
 /*STAR OVERLAY*/

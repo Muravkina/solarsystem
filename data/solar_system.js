@@ -5,6 +5,7 @@ var sun = {
 	diameterRatio: 109,
 	distanceFromEarth: 156,
 	distanceFromSun: 0,
+	travelTime: 0,
 	gravitationalFactor: 27.9
 }
 
@@ -19,6 +20,7 @@ var mercury = {
 	diameterRatio: 0.383,
 	lengthOfDay: 4222.6,
 	distanceFromSun: 36000000,
+	travelTime: 193,
 	distanceFromEarth: 147,
 	shuttleTraveled: 'Mariner',
 	gravitationalFactor: 0.378,
@@ -32,6 +34,7 @@ var venus = {
 	diameterRatio: 0.949,
 	lengthOfDay: 2802,
 	distanceFromSun: 67200000,
+	travelTime: 360,
 	distanceFromEarth: 456,
 	shuttleTraveled: 'Magellan',
 	gravitationalFactor: 0.907
@@ -45,6 +48,7 @@ var moon = {
 	lengthOfDay: 708.7,
 	distanceFromEarth: 3,
 	distanceFromSun: 92761000,
+	travelTime: 480,
 	shuttleTraveled: 'Apollo 11',
 	gravitationalFactor: 0.166
 }
@@ -55,6 +59,7 @@ var earth = {
 	diameter: 7926,
 	diameterRatio: 1,
 	lengthOfDay: 24,
+	travelTime: 499,
 	distanceFromEarth: 0,
 	shuttleTraveled: '',
 	distanceFromSun: 93000000,
@@ -68,6 +73,7 @@ var mars = {
 	diameterRatio: 0.532,
 	lengthOfDay: 24.7,
 	distanceFromSun: 141600000,
+	travelTime: 759,
 	distanceFromEarth: 213,
 	shuttleTraveled: 'Opportunity',
 	gravitationalFactor: 0.377
@@ -80,6 +86,7 @@ var jupiter = {
 	diameterRatio: 11.21,
 	lengthOfDay: 9.9,
 	distanceFromSun: 483800000,
+	travelTime: 2595,
 	distanceFromEarth: 1825,
 	shuttleTraveled: 'Juno',
 	gravitationalFactor: 2.36
@@ -92,6 +99,7 @@ var saturn = {
 	diameterRatio: 9.45,
 	lengthOfDay: 10.7,
 	distanceFromSun: 890800000,
+	travelTime: 4759,
 	distanceFromEarth: 2555,
 	shuttleTraveled: 'Cassini',
 	gravitationalFactor: 0.916
@@ -104,6 +112,7 @@ var uranus = {
 	diameterRatio: 4.01,
 	lengthOfDay: 17.2,
 	distanceFromSun: 1784800000,
+	travelTime: 9575,
 	distanceFromEarth: 3103,
 	shuttleTraveled: 'Voyager',
 	gravitationalFactor: 0.889
@@ -116,23 +125,13 @@ var neptune = {
 	diameterRatio: 3.88,
 	lengthOfDay: 16.1,
 	distanceFromSun: 2793100000,
+	travelTime: 14998,
 	distanceFromEarth: 4380,
 	shuttleTraveled: 'Voyager',
 	gravitationalFactor: 1.12
 }
 
-var pluto = {
-	name: 'Pluto',
-	category: 'planet',
-	diameter: 1464,
-	diameterRatio: 0.186,
-	lengthOfDay: 153.3,
-	distanceFromSun: 3670000000,
-	distanceFromEarth: 3468,
-	shuttleTraveled: 'New Horizons',
-	gravitationalFactor: 0.071
-}
 
-var solarSystem = [sun, mercury, venus, moon, earth, mars, jupiter, saturn, uranus, neptune, pluto];
+var solarSystem = [sun, mercury, venus, moon, earth, mars, jupiter, saturn, uranus, neptune];
 
 export default solarSystem;

@@ -15,11 +15,25 @@ class Solar extends Component {
     }
   }
 
-  moveToPlanet(planet) {
-    var planet = findDOMNode(this.refs[planet])
-    scrollTo(planet)
+
+  calculateTimeTravel(targetPlanet) {
+    //calculate travel time from one planet to another
+    var currentPosition = (window.pageXOffset);
+    var travelTime = Math.abs(targetPlanet.distanceFromSun / 200 - currentPosition) /100;
+
+    // if time travel is too short
+    travelTime = travelTime < 300 ? 300 : travelTime
+
+    return travelTime;
   }
 
+  moveToPlanet(planet) {
+    var travelTime  = this.calculateTimeTravel(planet)
+    var planetDOM = findDOMNode(this.refs[planet.name])
+    scrollTo(planetDOM, {
+      time: travelTime
+    })
+  }
 
   render() {
     var planetList = [];
@@ -30,7 +44,7 @@ class Solar extends Component {
       planetList.push(planet.name);
 
     	return (
-        <Planet key={i} planet={planet} marginLeft={planet.distanceFromSun} ref={planet.name}/>
+        <Planet key={i} planet={planet} marginLeft={planet.distanceFromSun} ref={planet.name} />
         )
     	})
     return(
@@ -93,13 +107,16 @@ class Image extends Component {
 
 class PlanetsList extends Component {
 
-  handleClick(event) {
-    this.props.moveToPlanet(event.target.textContent.trim())
+  handleClick(target) {
+    this.props.moveToPlanet(target)
   }
 
   render() {
+
+
+
     var planets = solarSystem.map((planet , i) => {
-      return ( <a key={i}  id={planet.name} onClick={this.handleClick.bind(this)}> {planet.name} </a>)
+      return ( <a key={i}  id={planet.name} onClick={this.handleClick.bind(this, planet)}> {planet.name} </a>)
     })
     return (
       <div className='navbar'>
