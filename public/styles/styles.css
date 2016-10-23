@@ -121,3 +121,11 @@ section.front_card .scrolling_direction p{
 .navbar li {
   display: inline-block;
 }
+
+/*DISTANCE WIDGET*/
+
+.distanceWidget {
+  position: fixed;
+  margin-top: 100px;
+  z-index: 2;
+}

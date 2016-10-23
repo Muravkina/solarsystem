@@ -3,6 +3,9 @@ import {render, findDOMNode} from 'react-dom';
 import solarSystem from '../data/solar_system.js';
 import scrollTo from 'scroll-into-view';
 
+// add distance widget
+// describtion on move on move out
+// satelites?
 
 
 
@@ -11,8 +14,54 @@ class Solar extends Component {
     super();
     this.state = {
         width: 0,
-        marginLeft: 0
+        marginLeft: 0,
+        distanceTraveled: 0,
+        startingPoint: 0
     }
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll.bind(this));
+    this.setState({
+      startingPoint: this.calculateStartingPoint()
+    })
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll.bind(this));
+  }
+
+  calculateStartingPoint() {
+    //calculate center of the 'Sun' element to determine starting point
+    var sun = findDOMNode(this.refs['Sun']);
+    var windowCenter = this.getBrowserCenter();
+    var centerX = (sun.offsetWidth  / 2 + sun.offsetLeft) - windowCenter;
+    
+    return centerX;
+  }
+
+  getBrowserCenter() {
+    //get current window center
+    if (self.innerWidth) {
+      return self.innerWidth / 2;
+    }
+
+    if (document.documentElement && document.documentElement.clientWidth) {
+      return document.documentElement.clientWidth / 2;
+    }
+
+    if (document.body) {
+      return document.body.clientWidth / 2;
+    }
+  }
+
+  handleScroll(){
+    var startingPoint = this.calculateStartingPoint();
+    var currentMilage = (window.pageXOffset - startingPoint) * 200;
+
+    this.setState({
+      distanceTraveled: currentMilage
+    })
   }
 
 
@@ -25,6 +74,13 @@ class Solar extends Component {
     travelTime = travelTime < 300 ? 300 : travelTime
 
     return travelTime;
+  }
+
+  calculateDistanceBetweenPlanets(planet) {
+    var marginLeft = planet.distanceFromSun / 200;
+    marginLeft = planet.name === "Sun" ? marginLeft : marginLeft - this.state.startingPoint;
+
+    return marginLeft;
   }
 
   moveToPlanet(planet) {
@@ -44,13 +100,14 @@ class Solar extends Component {
       planetList.push(planet.name);
 
     	return (
-        <Planet key={i} planet={planet} marginLeft={planet.distanceFromSun} ref={planet.name} />
+        <Planet key={i} planet={planet} marginLeft={this.calculateDistanceBetweenPlanets(planet)} startingPoint={this.state.startingPoint} ref={planet.name} />
         )
     	})
     return(
       <div>
-          <PlanetsList moveToPlanet={this.moveToPlanet.bind(this)}/>
-    	    <div className='solar_system_wrap'>{planets}</div>
+          { this.state.distanceTraveled > 0 ? <PlanetsList moveToPlanet={this.moveToPlanet.bind(this)}/> : null }
+          { this.state.distanceTraveled > 0 ? <DistanceWidget distanceTraveled={this.state.distanceTraveled}/> : null }
+          <div className='solar_system_wrap' onScroll={this.handleScroll}>{planets}</div>
       </div>
     );
   }
@@ -58,10 +115,14 @@ class Solar extends Component {
 
 
 class Planet extends Component {
+  
   render() {
+
+    var marginLeft = this.props.marginLeft / 200;
+    
     var divStyle = {
       //200 - arbitrary coeffcient to scale the width and distances;
-      left: this.props.marginLeft / 200
+      left: this.props.marginLeft
     }
     return (
 
@@ -88,6 +149,14 @@ class Description extends Component {
   }
 }
 
+class DistanceWidget extends Component {
+  render() {
+
+    return (
+      <div className="distanceWidget">{this.props.distanceTraveled}</div>
+    )
+  }
+}
 
 
 class Image extends Component {
@@ -112,8 +181,6 @@ class PlanetsList extends Component {
   }
 
   render() {
-
-
 
     var planets = solarSystem.map((planet , i) => {
       return ( <a key={i}  id={planet.name} onClick={this.handleClick.bind(this, planet)}> {planet.name} </a>)
