@@ -86,8 +86,10 @@ class Solar extends Component {
   moveToPlanet(planet) {
     var travelTime  = this.calculateTimeTravel(planet)
     var planetDOM = findDOMNode(this.refs[planet.name])
+
     scrollTo(planetDOM, {
-      time: travelTime
+      time: travelTime,
+      planet: planet.name
     })
   }
 
@@ -117,8 +119,6 @@ class Solar extends Component {
 class Planet extends Component {
   
   render() {
-
-    var marginLeft = this.props.marginLeft / 200;
     
     var divStyle = {
       //200 - arbitrary coeffcient to scale the width and distances;
