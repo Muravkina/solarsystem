@@ -105,10 +105,6 @@ section.front_card .scrolling_direction p{
   z-index: 1;
 }
 
-.planet h1 {
-  display: none;
-}
-
 
 /*NAVIGATIONAL BAR*/
 .navbar {
@@ -122,10 +118,19 @@ section.front_card .scrolling_direction p{
   display: inline-block;
 }
 
+
 /*DISTANCE WIDGET*/
 
 .distanceWidget {
   position: fixed;
   margin-top: 100px;
   z-index: 2;
+}
+
+
+/*DESCRIPTION*/
+
+.description {
+  display: inline-block;
+  position: relative;
 }
