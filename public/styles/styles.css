@@ -186,12 +186,38 @@ section.front_card .scrolling_direction p{
 
 /*DISTANCE WIDGET*/
 
-.distanceWidget {
+.distance_widget {
   position: fixed;
   bottom: 10%;
-  right: 7%;
+  right: 0%;
+  width: 20%;
   z-index: 2;
   font-size: 2em;
+}
+
+.distance_widget p {
+  display: inline-block;
+  margin-left: 0.3em;
+}
+
+.distance_widget ul {
+  display: inline-block;
+  list-style-type: none;
+  margin-left: 0.3em;
+  padding: 0;
+}
+
+.arrow {
+  width: 0;
+height: 0;
+border-style: solid;
+border-width: 10px 10px 0 10px;
+border-color: #fcfcfc transparent transparent transparent;
+position: relative;
+bottom: -50%;
+
+  transform: translate(0%, 270%) scale(0.8);
+
 }
 
 
@@ -201,15 +227,4 @@ section.front_card .scrolling_direction p{
   display: inline-block;
   position: relative;
 }
-
-/*SPEED OF LIGHT*/
-.speed_of_light {
-  top: 100px;
-  position: fixed;
-  z-index: 3;
-}
-
-
-
-
 

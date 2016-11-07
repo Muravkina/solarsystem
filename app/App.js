@@ -61,7 +61,7 @@ class Solar extends Component {
         currentDistance;
     }
 
-    return currentDistance;
+    return currentDistance.toFixed(1);
   }
 
   convertDistance(measurement){
@@ -205,39 +205,6 @@ class DistanceWidget extends Component {
     }
   }
 
-  // select(item) {
-  //   this.props.selected = item;
-  // }
-
-  // show() {
-  //   this.setState({
-  //     listVisible: true
-  //   });
-  //   document.addEventListener('click', this.hide);
-  // }
-
-  // hide() {
-  //   this.setState({
-  //     listVisible: false
-  //   });
-  //   document.removeEventListener('click', this.hide)
-  // }
-
-  // renderListItems() {
-  //     var items = [];
-  //     for (var i = 0; i < this.props.list.length; i++) {
-  //         var item = this.props.list[i];
-  //         items.push(<div onClick={this.select.bind(null, item)}>
-  //             <span style={{ color: item.hex }}>{item.name}</span>
-  //         </div>);
-  //     }
-  //     return items;
-  //   }
-
-  // handleChange(e){
-  //   this.props.convertDistance(e.target.value);
-  // }
-
   handleDropDown() {
     this.setState({
       open: !this.state.open
@@ -255,24 +222,23 @@ class DistanceWidget extends Component {
               return <li onClick={this.select.bind(this, measurement)}> {measurement} </li>
             })
     return (
-      <div className="distanceWidget">
-        {this.props.distanceTraveled}
+      <div className="distance_widget">
+
+        <span>{this.props.distanceTraveled}</span>
 
         {
           this.state.open 
 
           ?
 
-          <ul>
-            {measurements}
-          </ul>
+          <ul className="number">{measurements}</ul>
 
           :
 
-          <p onClick={this.handleDropDown.bind(this)}>{this.props.currentMeasurement}</p>
+          <p onClick={this.handleDropDown.bind(this)} className="measurement">{this.props.currentMeasurement}</p>
 
         }
-
+        <p className="arrow"></p>
       </div>
     )
   }
