@@ -26,7 +26,7 @@
   	font-size: 2em;
   }
 
-  .distanceWidget {
+  .distance_widget span {
   	font-size: 2.5em;
   }
 
@@ -46,7 +46,11 @@
   	font-size: 3em;
   }
 
-  .distanceWidget {
+  .distance_widget span, .distance_widget p {
   	font-size: 3em;
+  }
+
+  .arrow{
+    transform: translate(0%, 400%) scale(0.8);
   }
 }

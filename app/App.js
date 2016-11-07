@@ -34,11 +34,29 @@ class Solar extends Component {
   calculateStartingPoint() {
     //calculate center of the 'Sun' element to determine starting point
     var sun = findDOMNode(this.refs['Sun']);
+    var sunLeft = this.getLeftCoords(sun);
     var windowCenter = this.getBrowserCenter();
-    var centerX = (sun.offsetWidth  / 2 + sun.offsetLeft) - windowCenter;
 
+    var centerX = (sun.offsetWidth  / 2 + sunLeft) - windowCenter;
+    
     return centerX;
   }
+
+  getLeftCoords(elem) { 
+  // crossbrowser version
+    var box = elem.getBoundingClientRect();
+
+    var body = document.body;
+    var docEl = document.documentElement;
+
+    var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+
+    var clientLeft = docEl.clientLeft || body.clientLeft || 0;
+
+    var left = box.left + scrollLeft - clientLeft;
+
+    return Math.round(left);
+}
 
   calculateCurrentDistance(measurement) {
     var startingPoint = this.calculateStartingPoint();

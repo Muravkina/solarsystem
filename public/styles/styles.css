@@ -192,12 +192,17 @@ section.front_card .scrolling_direction p{
   right: 0%;
   width: 20%;
   z-index: 2;
-  font-size: 2em;
+  font-size: 14px;
 }
 
 .distance_widget p {
   display: inline-block;
   margin-left: 0.3em;
+  font-size: 2em;
+}
+
+.distance_widget span {
+  font-size: 2em;
 }
 
 .distance_widget ul {
