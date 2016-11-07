@@ -1,0 +1,52 @@
+/*800X600*/
+
+@media (min-width: 600px) and (max-width: 949px) {
+  /*NAVIGATION*/
+
+  .navbar .wrap {
+  	width: 95%;
+  }
+
+  .navbar a {
+  	margin-left: 1.3%;
+  	font-size: 2em;
+  }
+
+}
+
+@media (min-width: 950px) and (max-width: 1400px) {
+  /*NAVIGATION*/
+
+  .navbar .wrap {
+  	width: 80%;
+  }
+
+  .navbar a {
+  	margin-left: 1%;
+  	font-size: 2em;
+  }
+
+  .distanceWidget {
+  	font-size: 2.5em;
+  }
+
+}
+
+/*1200-1600*/
+
+@media (min-width: 1401px) and (max-width: 2000px) {
+/*NAVIGATION*/
+
+  .navbar .wrap {
+  	width: 95%;
+  }
+
+    .navbar a {
+  	margin-left: 2%;
+  	font-size: 3em;
+  }
+
+  .distanceWidget {
+  	font-size: 3em;
+  }
+}

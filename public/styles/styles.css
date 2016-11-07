@@ -25,6 +25,8 @@ body, html {
   white-space: nowrap;
   margin: 0;
   overflow-x: scroll;
+  font-size: 14px;
+  font-family: Mohave, sans-serif;
 }
 
 /*STAR OVERLAY*/
@@ -82,6 +84,7 @@ section.front_card .scrolling_direction p{
 #root, .solar_system_wrap{
   display: inline-block;
   width: 100%;
+  position: absolute;
 }
 
 
@@ -90,12 +93,13 @@ section.front_card .scrolling_direction p{
   z-index: 1;
   display: inline-block;
   position: relative;
-  overflow: auto;
+  overflow: visible;
+  text-align: center;
 }
 
 .planet .wrap {
   height: 100vh;
-  overflow: auto;
+  overflow: visible;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100%;
@@ -105,17 +109,78 @@ section.front_card .scrolling_direction p{
   z-index: 1;
 }
 
+.planet h1 {
+  position: absolute;
+  font-size: 4em;
+  left: 50%;
+  top: 20%;
+  height: 20%;
+  -webkit-transform: translate(-50%, -20%);
+  -moz-transform: translate(-50%, -20%);
+  -ms-transform: translate(-50%, -20%);
+  transform: translate(-50%, -20%);
+  font-family: Mohave, sans-serif;
+  letter-spacing: 0.05em;
+  z-index: 2;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+}
+
+.Sun h1 {
+  font-size: 7em;
+}
+
+.planet img {
+  position: absolute;
+  display: inline-block;
+  margin-right: auto;
+  left: 50%;
+  -webkit-transform: translate(-50%, -37%);
+  -moz-transform: translate(-50%, -37%);
+  -ms-transform: translate(-50%, -37%);
+  transform: translate(-50%, -37%) scale(0.7);
+  right: 0;
+  top: 37%;
+  width: 1.5em;
+  height: 17%;
+}
+
+.Uranus img {
+  height: 11%;
+  top: 35%;
+}
+
+.Saturn img, .Neptune img, .Jupiter img, .Sun img {
+  display: none;
+}
+
 
 /*NAVIGATIONAL BAR*/
 .navbar {
   position: fixed;
- /* width: 100%;*/
   z-index: 2;
   background-color: rgba(9, 9, 9, 0.3);
+  left: 35%;
+  transform: translateX(-35%);
+  margin-top: 2%;
+  display: inline-block;
+  width: 100%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
 }
 
-.navbar li {
+.navbar a {
   display: inline-block;
+  font-size: 2em;
+  float: left;
+  margin-left: 2%;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+}
+
+.navbar .wrap {
+  width: 100%;
+  margin: 0 auto;
+  overflow: auto;
+  display: block;
 }
 
 
@@ -123,8 +188,10 @@ section.front_card .scrolling_direction p{
 
 .distanceWidget {
   position: fixed;
-  margin-top: 100px;
+  bottom: 10%;
+  right: 7%;
   z-index: 2;
+  font-size: 2em;
 }
 
 
@@ -134,3 +201,15 @@ section.front_card .scrolling_direction p{
   display: inline-block;
   position: relative;
 }
+
+/*SPEED OF LIGHT*/
+.speed_of_light {
+  top: 100px;
+  position: fixed;
+  z-index: 3;
+}
+
+
+
+
+

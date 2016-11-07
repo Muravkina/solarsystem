@@ -10,6 +10,7 @@ import scrollTo from 'scroll-into-view';
 
 
 class Solar extends Component {
+
   constructor(){
     super();
     this.state = {
@@ -38,7 +39,6 @@ class Solar extends Component {
 
     return centerX;
   }
-
 
   calculateCurrentDistance(measurement) {
     var startingPoint = this.calculateStartingPoint();
@@ -94,9 +94,9 @@ class Solar extends Component {
   }
 
   calculateTimeTravel(targetPlanet) {
-    //calculate travel time from one planet to another
-    var currentPosition = (window.pageXOffset);
-    var travelTime = Math.abs(targetPlanet.distanceFromSun / 200 - currentPosition) / 300;
+
+    //calculate travel time from current point to athe panet
+    var travelTime = Math.abs(targetPlanet.distanceFromSun / 200 - window.pageXOffset) / 300;
 
     // if time travel is too short
     travelTime = travelTime < 300 ? 300 : travelTime;
@@ -111,9 +111,8 @@ class Solar extends Component {
     return marginLeft;
   }
 
-
   moveToPlanet(planet) {
-    var travelTime  = this.calculateTimeTravel(planet)
+    var travelTime  =  this.calculateTimeTravel(planet)
     var planetDOM = findDOMNode(this.refs[planet.name])
 
     scrollTo(planetDOM, {
@@ -125,28 +124,30 @@ class Solar extends Component {
   render() {
     var planetList = [];
 
-  	var planets = solarSystem.map((planet , i) => {
+    var planets = solarSystem.map((planet , i) => {
 
       //add planet's name to the array
       planetList.push(planet.name);
 
-    	return (
+      return (
         <Planet key={i} planet={planet} marginLeft={this.calculateDistanceBetweenPlanets(planet)} ref={planet.name} />
         )
-    	})
+      })
     return(
           // show navigation and distance widget at start point
       <div>
           { this.state.distanceTraveled > 0 ? <PlanetsList moveToPlanet={this.moveToPlanet.bind(this)}/> : null }
-          { this.state.distanceTraveled > 0 ? <DistanceWidget currentMeasurement={this.state.currentMeasurement} convertDistance={this.convertDistance.bind(this)} distanceTraveled={this.state.distanceTraveled}/> : null }
+          { this.state.distanceTraveled > 0 ? <DistanceWidget currentMeasurement={this.state.currentMeasurement} convertDistance={this.convertDistance.bind(this)}  distanceTraveled={this.state.distanceTraveled}/> : null }
           <div className='solar_system_wrap' onScroll={this.handleScroll.bind(this)}>{planets}</div>
       </div>
     );
   }
+
 }
 
 
 class Planet extends Component {
+
   constructor(){
     super();
     this.state = {
@@ -172,6 +173,7 @@ class Planet extends Component {
       <div className={`planet ${this.props.planet.name}`} style={divStyle}>
 
         <h1 onClick={this.showDescription.bind(this)}>{this.props.planet.name}</h1>
+        <img src="images/arrow.png" alt="arrow"/>
         { this.state.showDescription ? <Description planet={this.props.planet} /> : null }
         <Image planet={this.props.planet} />
 
@@ -179,6 +181,7 @@ class Planet extends Component {
 
     );
   }
+
 }
 
 
@@ -191,32 +194,96 @@ class Description extends Component {
       </div>
     );
   }
+
 }
 
 class DistanceWidget extends Component {
+  constructor(){
+    super();
+    this.state = {
+        open: false
+    }
+  }
 
-  handleChange(e){
-    this.props.convertDistance(e.target.value);
+  // select(item) {
+  //   this.props.selected = item;
+  // }
+
+  // show() {
+  //   this.setState({
+  //     listVisible: true
+  //   });
+  //   document.addEventListener('click', this.hide);
+  // }
+
+  // hide() {
+  //   this.setState({
+  //     listVisible: false
+  //   });
+  //   document.removeEventListener('click', this.hide)
+  // }
+
+  // renderListItems() {
+  //     var items = [];
+  //     for (var i = 0; i < this.props.list.length; i++) {
+  //         var item = this.props.list[i];
+  //         items.push(<div onClick={this.select.bind(null, item)}>
+  //             <span style={{ color: item.hex }}>{item.name}</span>
+  //         </div>);
+  //     }
+  //     return items;
+  //   }
+
+  // handleChange(e){
+  //   this.props.convertDistance(e.target.value);
+  // }
+
+  handleDropDown() {
+    this.setState({
+      open: !this.state.open
+    })
+  }
+
+  select(measurement) {
+    this.handleDropDown();
+    this.props.convertDistance(measurement);
   }
 
   render() {
-
+    var list = ["mi", "km", "light minutes", "pixels"]
+    var measurements = list.map((measurement) => {
+              return <li onClick={this.select.bind(this, measurement)}> {measurement} </li>
+            })
     return (
       <div className="distanceWidget">
         {this.props.distanceTraveled}
-         <select value={this.props.currentMeasurement} onChange={this.handleChange.bind(this)} >
-          <option value="mi">mi</option>
-          <option value="km">km</option>
-          <option value="light minutes">Light Minutes</option>
-          <option value="pixels">Pixels</option>
-        </select>
+
+        {
+          this.state.open 
+
+          ?
+
+          <ul>
+            {measurements}
+          </ul>
+
+          :
+
+          <p onClick={this.handleDropDown.bind(this)}>{this.props.currentMeasurement}</p>
+
+        }
+
       </div>
     )
   }
+
 }
 
 
+
+
 class Image extends Component {
+
   render() {
     //200 - arbitrary coeffcient to scale the width of the planets;
     var divStyle = {
@@ -224,11 +291,10 @@ class Image extends Component {
       backgroundImage: `url(images/${this.props.planet.name}.png)`
     }
     return (
-      <div className={`${this.props.planet.name} wrap`} style={divStyle}>
-
-      </div>
+      <div className={`${this.props.planet.name} wrap`} style={divStyle}></div>
     );
   }
+
 }
 
 class PlanetsList extends Component {
@@ -244,12 +310,13 @@ class PlanetsList extends Component {
     })
     return (
       <div className='navbar'>
-
-          {planets}
-
+          <div className="wrap">
+            {planets}
+          </div>
       </div>
     )
   }
+
 }
 
 
