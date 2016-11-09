@@ -38,11 +38,11 @@ class Solar extends Component {
     var windowCenter = this.getBrowserCenter();
 
     var centerX = (sun.offsetWidth  / 2 + sunLeft) - windowCenter;
-    
+
     return centerX;
   }
 
-  getLeftCoords(elem) { 
+  getLeftCoords(elem) {
   // crossbrowser version
     var box = elem.getBoundingClientRect();
 
@@ -70,7 +70,7 @@ class Solar extends Component {
         currentDistance = currentDistance * 1.6;
         break;
       case 'light minutes':
-        currentDistance = currentDistance / 11176943.8231;
+        currentDistance = (currentDistance / 11176943.8231).toFixed(2);
         break;
       case 'pixels':
         currentDistance = currentDistance / 200;
@@ -79,7 +79,7 @@ class Solar extends Component {
         currentDistance;
     }
 
-    return currentDistance.toFixed(1);
+    return currentDistance;
   }
 
   convertDistance(measurement){
@@ -191,8 +191,8 @@ class Planet extends Component {
       <div className={`planet ${this.props.planet.name}`} style={divStyle}>
 
         <h1 onClick={this.showDescription.bind(this)}>{this.props.planet.name}</h1>
-        <img src="images/arrow.png" alt="arrow"/>
         { this.state.showDescription ? <Description planet={this.props.planet} /> : null }
+        <img src="images/arrow.png" alt="arrow"/>
         <Image planet={this.props.planet} />
 
       </div>
@@ -241,11 +241,10 @@ class DistanceWidget extends Component {
             })
     return (
       <div className="distance_widget">
-
-        <span>{this.props.distanceTraveled}</span>
-
+        
+        <div>
         {
-          this.state.open 
+          this.state.open
 
           ?
 
@@ -256,7 +255,10 @@ class DistanceWidget extends Component {
           <p onClick={this.handleDropDown.bind(this)} className="measurement">{this.props.currentMeasurement}</p>
 
         }
-        <p className="arrow"></p>
+        </div>
+        <div>
+       <span>{this.props.distanceTraveled}</span>
+       </div>
       </div>
     )
   }
@@ -272,6 +274,7 @@ class Image extends Component {
     //200 - arbitrary coeffcient to scale the width of the planets;
     var divStyle = {
       width: this.props.planet.diameter / 200,
+      height: this.props.planet.diameter / 200,
       backgroundImage: `url(images/${this.props.planet.name}.png)`
     }
     return (

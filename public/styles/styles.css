@@ -21,7 +21,7 @@ body, html {
   background-position: 0% 0%;
   color: rgb(255, 255, 255);
   -webkit-font-smoothing: antialiased;
-  height: 100vh;
+
   white-space: nowrap;
   margin: 0;
   overflow-x: scroll;
@@ -84,7 +84,12 @@ section.front_card .scrolling_direction p{
 #root, .solar_system_wrap{
   display: inline-block;
   width: 100%;
+  height: 100%;
   position: absolute;
+}
+
+.solar_system_wrap > * {
+  vertical-align:top;
 }
 
 
@@ -95,61 +100,64 @@ section.front_card .scrolling_direction p{
   position: relative;
   overflow: visible;
   text-align: center;
+  top: 20%;
 }
 
 .planet .wrap {
-  height: 100vh;
   overflow: visible;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100%;
   position: relative;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0 auto;
   z-index: 1;
 }
 
+.Sun .wrap {
+  height: 100vh !important;
+}
+
+.Sun.planet {
+  margin-top: 0;
+}
+
 .planet h1 {
-  position: absolute;
+  position: relative;
   font-size: 4em;
-  left: 50%;
-  top: 20%;
-  height: 20%;
-  -webkit-transform: translate(-50%, -20%);
-  -moz-transform: translate(-50%, -20%);
-  -ms-transform: translate(-50%, -20%);
-  transform: translate(-50%, -20%);
   font-family: Mohave, sans-serif;
   letter-spacing: 0.05em;
   z-index: 2;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  margin-bottom: 0;
+  letter-spacing: 0.2em;
 }
+
 
 .Sun h1 {
   font-size: 7em;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  -webkit-transform: translate(-50%, -20%);
+  -moz-transform: translate(-50%, -20%);
+  -ms-transform: translate(-50%, -20%);
+  transform: translate(-50%, -20%);
+
 }
 
 .planet img {
-  position: absolute;
+  position: relative;
   display: inline-block;
-  margin-right: auto;
-  left: 50%;
-  -webkit-transform: translate(-50%, -37%);
-  -moz-transform: translate(-50%, -37%);
-  -ms-transform: translate(-50%, -37%);
-  transform: translate(-50%, -37%) scale(0.7);
-  right: 0;
-  top: 37%;
   width: 1.5em;
-  height: 17%;
+  margin: 1em auto;
+  height: 10em;
 }
 
-.Uranus img {
-  height: 11%;
-  top: 35%;
+.Uranus img, .Neptune img {
+  height: 5em;
 }
 
-.Saturn img, .Neptune img, .Jupiter img, .Sun img {
+.Saturn img, .Jupiter img, .Sun img {
   display: none;
 }
 
@@ -176,6 +184,10 @@ section.front_card .scrolling_direction p{
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
 }
 
+.navbar a:hover {
+  cursor: pointer;
+}
+
 .navbar .wrap {
   width: 100%;
   margin: 0 auto;
@@ -189,20 +201,30 @@ section.front_card .scrolling_direction p{
 .distance_widget {
   position: fixed;
   bottom: 10%;
-  right: 0%;
-  width: 20%;
+  right: 5%;
+  width: 30%;
   z-index: 2;
   font-size: 14px;
+}
+
+.distance_widget:hover {
+  cursor: pointer;
 }
 
 .distance_widget p {
   display: inline-block;
   margin-left: 0.3em;
   font-size: 2em;
+  float: right;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-.distance_widget span {
+.distance_widget span, .distance_widget ul  {
   font-size: 2em;
+  float: right;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .distance_widget ul {
@@ -210,17 +232,23 @@ section.front_card .scrolling_direction p{
   list-style-type: none;
   margin-left: 0.3em;
   padding: 0;
+  float: right;
+  position: absolute;
+  bottom: 0;
+}
+
+.distance_widget ul li {
+
 }
 
 .arrow {
   width: 0;
-height: 0;
-border-style: solid;
-border-width: 10px 10px 0 10px;
-border-color: #fcfcfc transparent transparent transparent;
-position: relative;
-bottom: -50%;
-
+  height: 0;
+  border-style: solid;
+  border-width: 10px 10px 0 10px;
+  border-color: #fcfcfc transparent transparent transparent;
+  position: relative;
+  bottom: -50%;
   transform: translate(0%, 270%) scale(0.8);
 
 }
@@ -231,5 +259,6 @@ bottom: -50%;
 .description {
   display: inline-block;
   position: relative;
+
 }
 

@@ -8,17 +8,17 @@
   }
 
   .navbar a {
-  	margin-left: 1.3%;
-  	font-size: 2em;
+  	margin-left: 1.6%;
+  	font-size: 1.8em;
   }
 
 }
 
-@media (min-width: 950px) and (max-width: 1400px) {
+@media (min-width: 950px) and (max-width: 1200px) {
   /*NAVIGATION*/
 
   .navbar .wrap {
-  	width: 80%;
+  	width: 95%;
   }
 
   .navbar a {
@@ -26,10 +26,22 @@
   	font-size: 2em;
   }
 
-  .distance_widget span {
+  .distance_widget span, .distance_widget ul  {
   	font-size: 2.5em;
   }
 
+}
+
+@media (min-width: 1201px) and (max-width: 1400px) {
+  /*NAVIGATION*/
+  .navbar .wrap {
+    width: 83%;
+  }
+
+  .navbar a {
+    margin-left: 2%;
+    font-size: 2.3em;
+  }
 }
 
 /*1200-1600*/
@@ -46,11 +58,11 @@
   	font-size: 3em;
   }
 
-  .distance_widget span, .distance_widget p {
-  	font-size: 3em;
+  .distance_widget span, .distance_widget p, .distance_widget ul  {
+  	font-size: 2em;
   }
 
   .arrow{
-    transform: translate(0%, 400%) scale(0.8);
+    transform: translate(0%, 300%) scale(0.8);
   }
 }
