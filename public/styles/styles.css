@@ -82,18 +82,13 @@ section.front_card .scrolling_direction p{
 
 
 /*PLANETS*/
-.solar_system_wrap {
-/*  background-image: url(../images/markings.png);
-  background-position: left bottom;
-  background-repeat: repeat-x;*/
-}
 
 .solar_system_wrap:after {
   content: '';
   left: 2361.5px;
   bottom: 0;
   width: 100%;
-  height: 7%;
+  height: 65px;
   background-image: url(../images/markings.png);
   background-repeat: repeat-x;
   position: absolute;
@@ -304,4 +299,18 @@ section.front_card .scrolling_direction p{
   position: relative;
 
 }
+
+/*SCALE*/
+
+.scale {
+  position: absolute;
+  left: 6000px;
+  top: 40%;
+  font-size: 1.5em;
+}
+
+.scale p {
+  text-align: center;
+}
+
 
