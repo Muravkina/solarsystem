@@ -16,7 +16,8 @@ class Solar extends Component {
     this.state = {
         distanceTraveled: 0,
         currentMeasurement: "mi",
-        startingPoint: 0
+        startingPoint: 0,
+        weight: 0
     }
   }
 
@@ -139,6 +140,12 @@ class Solar extends Component {
     })
   }
 
+  changeWeight(e) {
+    this.setState({
+      weight: e.target.value
+    })
+  }
+
   render() {
     var planetList = [];
 
@@ -148,14 +155,18 @@ class Solar extends Component {
       planetList.push(planet.name);
 
       return (
-        <Planet key={i} planet={planet} marginLeft={this.calculateDistanceBetweenPlanets(planet)} ref={planet.name} />
+        <Planet key={i} planet={planet} weight={this.state.weight} marginLeft={this.calculateDistanceBetweenPlanets(planet)} ref={planet.name} />
         )
       })
     return(
           // show navigation and distance widget at start point
       <div>
           { this.state.distanceTraveled > 0 ? <PlanetsList moveToPlanet={this.moveToPlanet.bind(this)}/> : null }
-          { this.state.distanceTraveled > 0 ? <DistanceWidget currentMeasurement={this.state.currentMeasurement} convertDistance={this.convertDistance.bind(this)}  distanceTraveled={this.state.distanceTraveled}/> : null }
+          { this.state.distanceTraveled > 0 ? <DistanceWidget currentMeasurement={this.state.currentMeasurement} 
+                                                              convertDistance={this.convertDistance.bind(this)}  
+                                                              distanceTraveled={this.state.distanceTraveled}/> : null }
+          { this.state.distanceTraveled > 0 ? <WeightWidget changeWeight={this.changeWeight.bind(this)}
+                                                            weight={this.state.weight} /> : null }                                                 
           <div className='solar_system_wrap' onScroll={this.handleScroll.bind(this)}>{planets}</div>
       </div>
     );
@@ -169,13 +180,14 @@ class Planet extends Component {
   constructor(){
     super();
     this.state = {
-        showDescription: false
+        showWeight: false
     }
   }
 
-  showDescription() {
+  showWeight() {
+    console.log(this.props.weight)
     this.setState({
-      showDescription: !this.state.showDescription
+      showWeight: !this.state.showWeight
     })
   }
 
@@ -190,8 +202,8 @@ class Planet extends Component {
 
       <div className={`planet ${this.props.planet.name}`} style={divStyle}>
 
-        <h1 onClick={this.showDescription.bind(this)}>{this.props.planet.name}</h1>
-        { this.state.showDescription ? <Description planet={this.props.planet} /> : null }
+        { this.state.showWeight ? <WeightOnPlanet weight={this.props.weight} planet={this.props.planet} /> : null }
+        <h1 onClick={this.showWeight.bind(this)}>{this.props.planet.name}</h1>
         <img src="images/arrow.png" alt="arrow"/>
         <Image planet={this.props.planet} />
 
@@ -202,13 +214,35 @@ class Planet extends Component {
 
 }
 
-
-class Description extends Component {
+class WeightWidget extends Component {
 
   render() {
     return (
+      <div className="weight_widget">
+        <img src="images/scale.png" alt="scale" className="weights"/> 
+        <div className="instructions">
+          <p>Enter your weight, scroll to any planet and see how much you weigh on that world</p>
+          <input type="text" value={this.props.weight} onChange={this.props.changeWeight} />
+        </div>
+      </div>
+    )
+  }
+}
+
+
+class WeightOnPlanet extends Component {
+
+  scaleWeight(weight, planet) {
+    return weight * planet.gravitationalFactor; 
+  }
+
+  render() {
+
+    var planet = this.props.planet;
+
+    return (
       <div className="description">
-        <p>ama</p>
+        <p>{this.scaleWeight(this.props.weight, this.props.planet)}</p>
       </div>
     );
   }

@@ -222,7 +222,7 @@ section.front_card .scrolling_direction p{
   position: fixed;
   bottom: 10%;
   right: 0;
-  width: 30%;
+  width: 24%;
   z-index: 2;
 }
 
@@ -295,12 +295,23 @@ section.front_card .scrolling_direction p{
 /*DESCRIPTION*/
 
 .description {
-  display: inline-block;
-  position: relative;
+  display: block;
+  position: absolute;
+  width: 100%;
+}
+
+.description p {
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 0;
+  letter-spacing: 0.05em;
+  font-family: Aleo, sans-serif;
+  font-weight: bold;
 
 }
 
-/*SCALE*/
+/*MEAUSREMENTS*/
 
 .scale {
   position: absolute;
@@ -313,8 +324,8 @@ section.front_card .scrolling_direction p{
   text-align: center;
 }
 
-/*CSS TRANSITION
-*/
+/*CSS TRANSITION*/
+
 .thing-appear {
   opacity: 0.01;
 }
@@ -331,4 +342,23 @@ section.front_card .scrolling_direction p{
 .thing-leave.thing-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
+}
+
+/*WEIGHTS*/
+
+.weight_widget {
+  position: fixed;
+  bottom: 10%;
+  left: 5%;
+  z-index: 1;
+}
+
+.weights {
+  width: 3%;
+  transition: all .3s ease-in;
+}
+
+.weights:hover {
+  cursor: pointer;
+  transform: scale(1.05);
 }
