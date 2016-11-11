@@ -313,4 +313,22 @@ section.front_card .scrolling_direction p{
   text-align: center;
 }
 
+/*CSS TRANSITION
+*/
+.thing-appear {
+  opacity: 0.01;
+}
 
+.thing-appear.thing-appear-active {
+  opacity: 1;
+  transition: opacity .4s ease-in;
+}
+
+.thing-leave {
+  opacity: 1;
+}
+
+.thing-leave.thing-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
