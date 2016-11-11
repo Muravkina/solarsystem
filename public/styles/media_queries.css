@@ -1,68 +1,65 @@
-/*800X600*/
 
-@media (min-width: 600px) and (max-width: 949px) {
-  /*NAVIGATION*/
 
-  .navbar .wrap {
-  	width: 95%;
+@media (min-width: 600px) and (max-width: 700px) {
+
+  body {
+    font-size: 9px;
   }
 
-  .navbar a {
-  	margin-left: 1.6%;
-  	font-size: 1.8em;
+  section.front_card {
+    font-size: 16px;
+  }
+
+}
+
+@media (min-width: 700px) and (max-width: 800px) {
+
+  body {
+    font-size: 11px;
+  }
+
+  section.front_card {
+    font-size: 19px;
+  }
+
+}
+
+@media (min-width: 800px) and (max-width: 950px) {
+
+  body {
+    font-size: 13px;
   }
 
 }
 
 @media (min-width: 950px) and (max-width: 1200px) {
-  /*NAVIGATION*/
 
-  .navbar .wrap {
-  	width: 95%;
+  body {
+    font-size: 15px;
   }
 
-  .navbar a {
-  	margin-left: 1%;
-  	font-size: 2em;
-  }
-
-  .distance_widget span, .distance_widget ul  {
-  	font-size: 2.5em;
+  section.front_card {
+    font-size: 22px;
   }
 
 }
 
 @media (min-width: 1201px) and (max-width: 1400px) {
-  /*NAVIGATION*/
-  .navbar .wrap {
-    width: 83%;
+  body {
+    font-size: 19px;
   }
 
-  .navbar a {
-    margin-left: 2%;
-    font-size: 2.3em;
+  section.front_card {
+    font-size: 24px;
   }
 }
 
-/*1200-1600*/
-
-@media (min-width: 1401px) and (max-width: 2000px) {
-/*NAVIGATION*/
-
-  .navbar .wrap {
-  	width: 95%;
+@media (min-width: 1401px) and (max-width: 3000px) {
+  body {
+    font-size: 22px;
   }
 
-    .navbar a {
-  	margin-left: 2%;
-  	font-size: 3em;
-  }
-
-  .distance_widget span, .distance_widget p, .distance_widget ul  {
-  	font-size: 2em;
-  }
-
-  .arrow{
-    transform: translate(0%, 300%) scale(0.8);
+  section.front_card {
+    font-size: 26px;
   }
 }

@@ -21,7 +21,7 @@ body, html {
   background-position: 0% 0%;
   color: rgb(255, 255, 255);
   -webkit-font-smoothing: antialiased;
-
+  height: 100%;
   white-space: nowrap;
   margin: 0;
   overflow-x: scroll;
@@ -51,6 +51,7 @@ section.front_card {
   font-family: Mohave, sans-serif;
   font-size: 20px;
   z-index: 1;
+  top: 5%;
 }
 
 section.front_card h1 {
@@ -119,6 +120,7 @@ section.front_card .scrolling_direction p{
 
 .Sun.planet {
   margin-top: 0;
+  top: 0;
 }
 
 .planet h1 {
@@ -189,10 +191,14 @@ section.front_card .scrolling_direction p{
 }
 
 .navbar .wrap {
-  width: 100%;
-  margin: 0 auto;
   overflow: auto;
-  display: block;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -201,28 +207,30 @@ section.front_card .scrolling_direction p{
 .distance_widget {
   position: fixed;
   bottom: 10%;
-  right: 5%;
+  right: 0;
   width: 30%;
   z-index: 2;
-  font-size: 14px;
 }
 
 .distance_widget:hover {
   cursor: pointer;
 }
 
+.distance_widget p:hover {
+  text-decoration: underline;
+}
+
 .distance_widget p {
   display: inline-block;
   margin-left: 0.3em;
   font-size: 2em;
-  float: right;
   margin-top: 0;
   margin-bottom: 0;
+  transition: all .2s ease-in-out;
 }
 
 .distance_widget span, .distance_widget ul  {
   font-size: 2em;
-  float: right;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -235,10 +243,23 @@ section.front_card .scrolling_direction p{
   float: right;
   position: absolute;
   bottom: 0;
+  transition: all .2s ease-in-out;
 }
 
-.distance_widget ul li {
+.distance_widget ul li:after {
+  content: '';
+  border-bottom: solid 1px white;  
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+  transform-origin:  0% 50%; 
+}
 
+.distance_widget ul li:hover:after { 
+  transform: scaleX(1); 
+}
+
+.distance_widget div {
+  float: left;
 }
 
 .arrow {

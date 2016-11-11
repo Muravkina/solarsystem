@@ -241,7 +241,9 @@ class DistanceWidget extends Component {
             })
     return (
       <div className="distance_widget">
-        
+        <div>
+       <span>{this.props.distanceTraveled}</span>
+       </div>
         <div>
         {
           this.state.open
@@ -256,9 +258,6 @@ class DistanceWidget extends Component {
 
         }
         </div>
-        <div>
-       <span>{this.props.distanceTraveled}</span>
-       </div>
       </div>
     )
   }
