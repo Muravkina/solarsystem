@@ -216,9 +216,6 @@ section.front_card .scrolling_direction p{
   cursor: pointer;
 }
 
-.distance_widget p:hover {
-  text-decoration: underline;
-}
 
 .distance_widget p {
   display: inline-block;
@@ -246,16 +243,22 @@ section.front_card .scrolling_direction p{
   transition: all .2s ease-in-out;
 }
 
-.distance_widget ul li:after {
-  content: '';
-  border-bottom: solid 1px white;  
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-  transform-origin:  0% 50%; 
+.distance_widget ul li p {
+  font-size: 1em;
+  margin-left: 0;
 }
 
-.distance_widget ul li:hover:after { 
-  transform: scaleX(1); 
+.distance_widget p:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width .3s;
+}
+
+.distance_widget p:hover:after { 
+  width: 100%; 
 }
 
 .distance_widget div {

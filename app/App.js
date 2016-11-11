@@ -237,7 +237,7 @@ class DistanceWidget extends Component {
   render() {
     var list = ["mi", "km", "light minutes", "pixels"]
     var measurements = list.map((measurement) => {
-              return <li onClick={this.select.bind(this, measurement)}> {measurement} </li>
+              return <li onClick={this.select.bind(this, measurement)}> <p>{measurement}</p> </li>
             })
     return (
       <div className="distance_widget">
