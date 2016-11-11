@@ -38,7 +38,7 @@ class Solar extends Component {
     var windowCenter = this.getBrowserCenter();
 
     var centerX = (sun.offsetWidth  / 2 + sunLeft) - windowCenter;
-
+    console.log(centerX)
     return centerX;
   }
 
@@ -59,7 +59,7 @@ class Solar extends Component {
 }
 
   calculateCurrentDistance(measurement) {
-    var startingPoint = this.calculateStartingPoint();
+    var startingPoint = this.state.startingPoint;
     var currentDistance = (window.pageXOffset - startingPoint) * 200
 
     switch(measurement) {
