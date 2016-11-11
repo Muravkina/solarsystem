@@ -56,7 +56,7 @@ class Solar extends Component {
     var left = box.left + scrollLeft - clientLeft;
 
     return Math.round(left);
-}
+  }
 
   calculateCurrentDistance(measurement) {
     var startingPoint = this.state.startingPoint;
@@ -234,6 +234,13 @@ class DistanceWidget extends Component {
     this.props.convertDistance(measurement);
   }
 
+  format(num){
+    var n = num.toString(), p = n.indexOf('.');
+    return n.replace(/\d(?=(?:\d{3})+(?:\.|$))/g, function($0, i){
+        return p<0 || i<p ? ($0+',') : $0;
+    });
+  }
+
   render() {
     var list = ["mi", "km", "light minutes", "pixels"]
     var measurements = list.map((measurement) => {
@@ -242,7 +249,7 @@ class DistanceWidget extends Component {
     return (
       <div className="distance_widget">
         <div>
-       <span>{this.props.distanceTraveled}</span>
+       <span>{this.format(this.props.distanceTraveled)}</span>
        </div>
         <div>
         {
