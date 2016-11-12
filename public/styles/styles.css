@@ -162,7 +162,7 @@ section.front_card .scrolling_direction p{
   -moz-transform: translate(-50%, -20%);
   -ms-transform: translate(-50%, -20%);
   transform: translate(-50%, -20%);
-
+  z-index: 5;
 }
 
 .planet img {
@@ -189,7 +189,7 @@ section.front_card .scrolling_direction p{
 /*NAVIGATIONAL BAR*/
 .navbar {
   position: fixed;
-  z-index: 2;
+  z-index: 7;
   background-color: rgba(9, 9, 9, 0.3);
   left: 35%;
   transform: translateX(-35%);
@@ -233,7 +233,7 @@ section.front_card .scrolling_direction p{
   bottom: 8%;
   right: 0;
   width: 24%;
-  z-index: 2;
+  z-index: 5;
 }
 
 .distance_widget:hover {
@@ -328,10 +328,11 @@ section.front_card .scrolling_direction p{
   letter-spacing: 0.05em;
   font-family: Aleo, sans-serif;
   font-weight: bold;
-  text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  color: #a9a5a5;
 }
 
-.Jupiter .description {
+.Jupiter .description, .Sun .description {
   top: 55%;
   z-index: 4;
   margin-bottom: 2%;
@@ -404,13 +405,12 @@ section.front_card .scrolling_direction p{
 }
 
 .weight_widget .instructions {
-  margin-left: 10%;
+  margin-left: 20%;
 }
 
 .weight_widget .instructions p {
   margin: 0;
   font-family: Aleo, sans-serif;
   font-size: 1em;
-  text-shadow: 5px 3px 0px rgba(6, 6, 6, 0.75);
   z-index: 2;
 }

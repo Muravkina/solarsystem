@@ -177,32 +177,6 @@ class Solar extends Component {
 
 class Planet extends Component {
 
-  constructor(){
-    super();
-    this.state = {
-        showWeight: false,
-        hover: false
-    }
-  }
-
-  showWeight() {
-    this.setState({
-      showWeight: !this.state.showWeight
-    })
-  }
-
-  handleMouseEnter() {
-    this.setState({
-      hover: true
-    })
-  }
-
-  handleMouseLeave() {
-    this.setState({
-      hover: false
-    })
-  }
-
   render() {
 
     var divStyle = {
@@ -214,31 +188,9 @@ class Planet extends Component {
 
       <div className={`planet ${this.props.planet.name}`} style={divStyle}>
 
-        { this.state.showWeight ? <WeightOnPlanet weight={this.props.weight} planet={this.props.planet} /> : null }
+        { this.props.weight > 0 ? <WeightOnPlanet weight={this.props.weight} planet={this.props.planet} /> : null }
 
-        <h1 onClick={this.showWeight.bind(this)} 
-            onMouseEnter={this.handleMouseEnter.bind(this)} 
-            onMouseLeave={this.handleMouseLeave.bind(this)}>
-
-              {this.props.planet.name}
-        </h1>
-
-        { this.state.hover 
-          ?
-          <ReactCSSTransitionGroup 
-                                  transitionName="thing" 
-                                  transitionAppear={true} 
-                                  transitionAppearTimeout={400} 
-                                  transitionLeave={true} 
-                                  transitionLeaveTimeout={300}
-                                  transitionEnter={false} >
-
-            <div><p className="instructions"> (Click to reveal your weight on this planet) </p> </div>
-
-          </ReactCSSTransitionGroup>
-          :
-          null
-        } 
+        <h1>{this.props.planet.name}</h1>
 
         <img src="images/arrow.png" alt="arrow"/>
 
@@ -272,10 +224,18 @@ class WeightWidget extends Component {
 
         {this.state.showInstructions
             ?
-          <div className="instructions">
-            <p>Enter your weight. Scroll to any planet. See how much you weigh on that world</p>
-            <input type="text" value={this.props.weight} onChange={this.props.changeWeight} />
-          </div>
+          <ReactCSSTransitionGroup 
+                                  transitionName="thing" 
+                                  transitionAppear={true} 
+                                  transitionAppearTimeout={400} 
+                                  transitionLeave={true} 
+                                  transitionLeaveTimeout={300}
+                                  transitionEnter={false} >
+            <div className="instructions">
+              <p>See how much you weigh on other worlds.</p>
+              <input type="text" value={this.props.weight} onChange={this.props.changeWeight} />
+            </div>
+          </ReactCSSTransitionGroup> 
             :
           null
         }
@@ -289,7 +249,7 @@ class WeightWidget extends Component {
 class WeightOnPlanet extends Component {
 
   scaleWeight(weight, planet) {
-    return weight * planet.gravitationalFactor; 
+    return (weight * planet.gravitationalFactor).toFixed(1); 
   }
 
   render() {
