@@ -108,7 +108,8 @@ section.front_card .scrolling_direction p{
 
 
 /*INDIVIDUAL PLANET*/
-.planet {
+
+.planet, .planet_info_wrap  {
   z-index: 1;
   display: inline-block;
   position: relative;
@@ -132,7 +133,7 @@ section.front_card .scrolling_direction p{
   z-index: 3;
 }
 
-.Sun.planet {
+.Sun.planet, .planet_info_wrap.Sun {
   margin-top: 0;
   top: 0;
   z-index: 3;
@@ -177,7 +178,7 @@ section.front_card .scrolling_direction p{
   height: 3em;
 }
 
-.Jupiter.planet {
+.Jupiter.planet, .planet_info_wrap.Jupiter  {
   top: 6%;
 }
 
@@ -281,8 +282,8 @@ section.front_card .scrolling_direction p{
   transition: width .3s;
 }
 
-.distance_widget p:hover:after { 
-  width: 100%; 
+.distance_widget p:hover:after {
+  width: 100%;
 }
 
 .distance_widget div {
@@ -414,3 +415,12 @@ section.front_card .scrolling_direction p{
   font-size: 1em;
   z-index: 2;
 }
+
+.info {
+  position: absolute;
+}
+.info.false {
+  display: none;
+}
+
+

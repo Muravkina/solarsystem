@@ -4,9 +4,6 @@ import solarSystem from '../data/solar_system.js';
 import scrollTo from 'scroll-into-view';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-// describtion on move on move out
-// satelites?
-
 
 
 class Solar extends Component {
@@ -17,25 +14,24 @@ class Solar extends Component {
         distanceTraveled: 0,
         currentMeasurement: "mi",
         startingPoint: 0,
-        weight: 0,
-        showInfo: ''
+        weight: 0
     }
   }
 
-  findAllPlanetNodes() {
+  findAllPlanetRefs() {
     //find all the planet DOM nodes
-    var planetNodes = [];
+    var planetRefs = [];
 
     for (var ref in this.refs) {
-        planetNodes.push(findDOMNode(this.refs[ref]))
+      this.refs[ref].constructor.name === 'Planet' ? planetRefs.push(this.refs[ref]) : null
     }
 
-    return planetNodes;
+    return planetRefs;
   }
 
   componentDidMount() {
     //find all planet DOM nodes
-    this.planetNodes = this.findAllPlanetNodes();
+    this.planetRefs = this.findAllPlanetRefs();
 
     window.addEventListener('scroll', this.handleScroll.bind(this));
     this.setState({
@@ -54,7 +50,7 @@ class Solar extends Component {
     var windowCenter = this.getBrowserCenter();
 
     var centerX = (sun.offsetWidth  / 2 + sunLeft) - windowCenter;
-    console.log(centerX)
+    
     return centerX;
   }
 
@@ -122,28 +118,33 @@ class Solar extends Component {
 
   handleScroll() {
     //change traveled distance in distance widget
+    this.visiblePlanet = this.whatElementIsInViewport();
+
     this.setState({
       distanceTraveled: this.calculateCurrentDistance(this.state.currentMeasurement),
-      showInfo: this.whatElementIsInViewport()
     })
 
   }
 
   whatElementIsInViewport() {
     //what planet is visible at the moment
-    var planet = this.planetNodes.filter(function(planet){
+        
+    var planet = this.planetRefs.filter(function(planet){
       if (this.isElementInViewport(planet) === true) {
         return planet;
       }
     }, this)
 
-    return planet;
+    if(planet.length !== 0) { 
+      return planet[0].props.planet.name;
+    }
   }
-
 
   isElementInViewport(el) {
     //calculate if element is displayed in viewport
-    var rect = el.getBoundingClientRect();
+    var planetNode = findDOMNode(el)
+  
+    var rect = planetNode.getBoundingClientRect();
 
     return rect.left >=80 &&
            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
@@ -183,6 +184,7 @@ class Solar extends Component {
     })
   }
 
+
   render() {
     var planetList = [];
 
@@ -192,18 +194,23 @@ class Solar extends Component {
       planetList.push(planet.name);
 
       return (
-        <Planet key={i} planet={planet} weight={this.state.weight} marginLeft={this.calculateDistanceBetweenPlanets(planet)} ref={planet.name} />
-        )
-      })
+        <div className={"planet_info_wrap " + planet.name }>
+          <Planet key={i} planet={planet} weight={this.state.weight}
+                  marginLeft={this.calculateDistanceBetweenPlanets(planet)}
+                  ref={planet.name}  />
+          <Info ref={planet.name + "_info"} visible={planet.name === this.visiblePlanet} planet={planet}/>
+        </div>
+      )
+    })
     return(
           // show navigation and distance widget at start point
       <div>
-          { this.state.distanceTraveled > 0 ? <PlanetsList moveToPlanet={this.moveToPlanet.bind(this)}/> : null }
+          { this.state.distanceTraveled > 0 ? <PlanetsList    moveToPlanet={this.moveToPlanet.bind(this)}/> : null }
           { this.state.distanceTraveled > 0 ? <DistanceWidget currentMeasurement={this.state.currentMeasurement}
                                                               convertDistance={this.convertDistance.bind(this)}
                                                               distanceTraveled={this.state.distanceTraveled}/> : null }
-          { this.state.distanceTraveled > 0 ? <WeightWidget changeWeight={this.changeWeight.bind(this)}
-                                                            weight={this.state.weight} /> : null }
+          { this.state.distanceTraveled > 0 ? <WeightWidget   changeWeight={this.changeWeight.bind(this)}
+                                                              weight={this.state.weight} /> : null }
           <div className='solar_system_wrap' onScroll={this.handleScroll.bind(this)}>{planets}</div>
       </div>
     );
@@ -232,8 +239,6 @@ class Planet extends Component {
         <img src="images/arrow.png" alt="arrow"/>
 
         <Image planet={this.props.planet} />
-
-        <Fact/>
 
       </div>
 
@@ -283,7 +288,6 @@ class WeightWidget extends Component {
     )
   }
 }
-
 
 class WeightOnPlanet extends Component {
 
@@ -360,9 +364,6 @@ class DistanceWidget extends Component {
 
 }
 
-
-
-
 class Image extends Component {
 
   render() {
@@ -410,10 +411,11 @@ class PlanetsList extends Component {
 
 }
 
-class Fact extends Component {
+class Info extends Component {
   render() {
     return(
-      <div>
+      <div className={`info ${this.props.visible}`}>
+        <p>bla</p>
       </div>
     )
   }
