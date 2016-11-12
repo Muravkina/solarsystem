@@ -231,7 +231,7 @@ section.front_card .scrolling_direction p{
 .distance_widget {
   position: fixed;
   bottom: 8%;
-  right: 0;
+  right: 7%;
   width: 24%;
   z-index: 5;
 }

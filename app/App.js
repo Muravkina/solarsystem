@@ -17,11 +17,26 @@ class Solar extends Component {
         distanceTraveled: 0,
         currentMeasurement: "mi",
         startingPoint: 0,
-        weight: 0
+        weight: 0,
+        showInfo: ''
     }
   }
 
+  findAllPlanetNodes() {
+    //find all the planet DOM nodes
+    var planetNodes = [];
+
+    for (var ref in this.refs) {
+        planetNodes.push(findDOMNode(this.refs[ref]))
+    }
+
+    return planetNodes;
+  }
+
   componentDidMount() {
+    //find all planet DOM nodes
+    this.planetNodes = this.findAllPlanetNodes();
+
     window.addEventListener('scroll', this.handleScroll.bind(this));
     this.setState({
       startingPoint: this.calculateStartingPoint()
@@ -105,11 +120,33 @@ class Solar extends Component {
     }
   }
 
-  handleScroll(){
+  handleScroll() {
     //change traveled distance in distance widget
     this.setState({
-      distanceTraveled: this.calculateCurrentDistance(this.state.currentMeasurement)
+      distanceTraveled: this.calculateCurrentDistance(this.state.currentMeasurement),
+      showInfo: this.whatElementIsInViewport()
     })
+
+  }
+
+  whatElementIsInViewport() {
+    //what planet is visible at the moment
+    var planet = this.planetNodes.filter(function(planet){
+      if (this.isElementInViewport(planet) === true) {
+        return planet;
+      }
+    }, this)
+
+    return planet;
+  }
+
+
+  isElementInViewport(el) {
+    //calculate if element is displayed in viewport
+    var rect = el.getBoundingClientRect();
+
+    return rect.left >=80 &&
+           rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   }
 
   calculateTimeTravel(targetPlanet) {
@@ -162,11 +199,11 @@ class Solar extends Component {
           // show navigation and distance widget at start point
       <div>
           { this.state.distanceTraveled > 0 ? <PlanetsList moveToPlanet={this.moveToPlanet.bind(this)}/> : null }
-          { this.state.distanceTraveled > 0 ? <DistanceWidget currentMeasurement={this.state.currentMeasurement} 
-                                                              convertDistance={this.convertDistance.bind(this)}  
+          { this.state.distanceTraveled > 0 ? <DistanceWidget currentMeasurement={this.state.currentMeasurement}
+                                                              convertDistance={this.convertDistance.bind(this)}
                                                               distanceTraveled={this.state.distanceTraveled}/> : null }
           { this.state.distanceTraveled > 0 ? <WeightWidget changeWeight={this.changeWeight.bind(this)}
-                                                            weight={this.state.weight} /> : null }                                                 
+                                                            weight={this.state.weight} /> : null }
           <div className='solar_system_wrap' onScroll={this.handleScroll.bind(this)}>{planets}</div>
       </div>
     );
@@ -196,6 +233,8 @@ class Planet extends Component {
 
         <Image planet={this.props.planet} />
 
+        <Fact/>
+
       </div>
 
     );
@@ -224,18 +263,18 @@ class WeightWidget extends Component {
 
         {this.state.showInstructions
             ?
-          <ReactCSSTransitionGroup 
-                                  transitionName="thing" 
-                                  transitionAppear={true} 
-                                  transitionAppearTimeout={400} 
-                                  transitionLeave={true} 
+          <ReactCSSTransitionGroup
+                                  transitionName="thing"
+                                  transitionAppear={true}
+                                  transitionAppearTimeout={400}
+                                  transitionLeave={true}
                                   transitionLeaveTimeout={300}
                                   transitionEnter={false} >
             <div className="instructions">
               <p>See how much you weigh on other worlds.</p>
               <input type="text" value={this.props.weight} onChange={this.props.changeWeight} />
             </div>
-          </ReactCSSTransitionGroup> 
+          </ReactCSSTransitionGroup>
             :
           null
         }
@@ -249,7 +288,7 @@ class WeightWidget extends Component {
 class WeightOnPlanet extends Component {
 
   scaleWeight(weight, planet) {
-    return (weight * planet.gravitationalFactor).toFixed(1); 
+    return (weight * planet.gravitationalFactor).toFixed(1);
   }
 
   render() {
@@ -352,11 +391,11 @@ class PlanetsList extends Component {
       return ( <a key={i}  id={planet.name} onClick={this.handleClick.bind(this, planet)}> {planet.name} </a>)
     })
     return (
-       <ReactCSSTransitionGroup 
-                                  transitionName="thing" 
-                                  transitionAppear={true} 
-                                  transitionAppearTimeout={400} 
-                                  transitionLeave={true} 
+       <ReactCSSTransitionGroup
+                                  transitionName="thing"
+                                  transitionAppear={true}
+                                  transitionAppearTimeout={400}
+                                  transitionLeave={true}
                                   transitionLeaveTimeout={300}
                                   transitionEnter={false} >
           <div className='navbar'>
@@ -369,6 +408,15 @@ class PlanetsList extends Component {
     )
   }
 
+}
+
+class Fact extends Component {
+  render() {
+    return(
+      <div>
+      </div>
+    )
+  }
 }
 
 
