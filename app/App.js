@@ -180,14 +180,26 @@ class Planet extends Component {
   constructor(){
     super();
     this.state = {
-        showWeight: false
+        showWeight: false,
+        hover: false
     }
   }
 
   showWeight() {
-    console.log(this.props.weight)
     this.setState({
       showWeight: !this.state.showWeight
+    })
+  }
+
+  handleMouseEnter() {
+    this.setState({
+      hover: true
+    })
+  }
+
+  handleMouseLeave() {
+    this.setState({
+      hover: false
     })
   }
 
@@ -203,8 +215,33 @@ class Planet extends Component {
       <div className={`planet ${this.props.planet.name}`} style={divStyle}>
 
         { this.state.showWeight ? <WeightOnPlanet weight={this.props.weight} planet={this.props.planet} /> : null }
-        <h1 onClick={this.showWeight.bind(this)}>{this.props.planet.name}</h1>
+
+        <h1 onClick={this.showWeight.bind(this)} 
+            onMouseEnter={this.handleMouseEnter.bind(this)} 
+            onMouseLeave={this.handleMouseLeave.bind(this)}>
+
+              {this.props.planet.name}
+        </h1>
+
+        { this.state.hover 
+          ?
+          <ReactCSSTransitionGroup 
+                                  transitionName="thing" 
+                                  transitionAppear={true} 
+                                  transitionAppearTimeout={400} 
+                                  transitionLeave={true} 
+                                  transitionLeaveTimeout={300}
+                                  transitionEnter={false} >
+
+            <div><p className="instructions"> (Click to reveal your weight on this planet) </p> </div>
+
+          </ReactCSSTransitionGroup>
+          :
+          null
+        } 
+
         <img src="images/arrow.png" alt="arrow"/>
+
         <Image planet={this.props.planet} />
 
       </div>
@@ -215,15 +252,34 @@ class Planet extends Component {
 }
 
 class WeightWidget extends Component {
+  constructor(){
+    super();
+    this.state = {
+        showInstructions: false
+    }
+  }
+
+  showInstructions() {
+    this.setState({
+      showInstructions: !this.state.showInstructions
+    })
+  }
 
   render() {
     return (
       <div className="weight_widget">
-        <img src="images/scale.png" alt="scale" className="weights"/> 
-        <div className="instructions">
-          <p>Enter your weight, scroll to any planet and see how much you weigh on that world</p>
-          <input type="text" value={this.props.weight} onChange={this.props.changeWeight} />
-        </div>
+        <div className="weights"><img src="images/scale.png" alt="scale" onClick={this.showInstructions.bind(this)}/> </div>
+
+        {this.state.showInstructions
+            ?
+          <div className="instructions">
+            <p>Enter your weight. Scroll to any planet. See how much you weigh on that world</p>
+            <input type="text" value={this.props.weight} onChange={this.props.changeWeight} />
+          </div>
+            :
+          null
+        }
+
       </div>
     )
   }

@@ -88,10 +88,11 @@ section.front_card .scrolling_direction p{
   left: 2361.5px;
   bottom: 0;
   width: 100%;
-  height: 65px;
+  height: 50px;
   background-image: url(../images/markings.png);
   background-repeat: repeat-x;
   position: absolute;
+  z-index: 2;
 }
 
 #root, .solar_system_wrap{
@@ -113,7 +114,7 @@ section.front_card .scrolling_direction p{
   position: relative;
   overflow: visible;
   text-align: center;
-  top: 20%;
+  top: 21%;
 }
 
 .planet .wrap {
@@ -128,11 +129,13 @@ section.front_card .scrolling_direction p{
 
 .Sun .wrap {
   height: 100vh !important;
+  z-index: 3;
 }
 
 .Sun.planet {
   margin-top: 0;
   top: 0;
+  z-index: 3;
 }
 
 .planet h1 {
@@ -146,6 +149,9 @@ section.front_card .scrolling_direction p{
   letter-spacing: 0.2em;
 }
 
+.planet h1:hover{
+  cursor: pointer;
+}
 
 .Sun h1 {
   font-size: 7em;
@@ -164,11 +170,15 @@ section.front_card .scrolling_direction p{
   display: inline-block;
   width: 1.5em;
   margin: 1em auto;
-  height: 10em;
+  height: 4em;
 }
 
 .Uranus img, .Neptune img {
-  height: 5em;
+  height: 3em;
+}
+
+.Jupiter.planet {
+  top: 6%;
 }
 
 .Saturn img, .Jupiter img, .Sun img {
@@ -220,7 +230,7 @@ section.front_card .scrolling_direction p{
 
 .distance_widget {
   position: fixed;
-  bottom: 10%;
+  bottom: 8%;
   right: 0;
   width: 24%;
   z-index: 2;
@@ -293,6 +303,16 @@ section.front_card .scrolling_direction p{
 
 
 /*DESCRIPTION*/
+.planet .instructions {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  margin-top: -0.5em;
+  font-size: 1em;
+  font-family: Aleo, sans-serif;
+  z-index: 5;
+}
 
 .description {
   display: block;
@@ -308,7 +328,17 @@ section.front_card .scrolling_direction p{
   letter-spacing: 0.05em;
   font-family: Aleo, sans-serif;
   font-weight: bold;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+}
 
+.Jupiter .description {
+  top: 55%;
+  z-index: 4;
+  margin-bottom: 2%;
+}
+
+.Jupiter.wrap {
+  margin-top: 4%;
 }
 
 /*MEAUSREMENTS*/
@@ -348,17 +378,39 @@ section.front_card .scrolling_direction p{
 
 .weight_widget {
   position: fixed;
-  bottom: 10%;
+  bottom: 8%;
   left: 5%;
   z-index: 1;
+  z-index: 4;
 }
 
 .weights {
-  width: 3%;
-  transition: all .3s ease-in;
+  width: 2.5em;
+  z-index: 2;
+  transition: all .2s ease-in;
+  float: left;
+  display: block;
+}
+
+.weights img {
+  width: 100%;
+  transition: width .2s ease-in;
+  z-index: 3;
 }
 
 .weights:hover {
   cursor: pointer;
   transform: scale(1.05);
+}
+
+.weight_widget .instructions {
+  margin-left: 10%;
+}
+
+.weight_widget .instructions p {
+  margin: 0;
+  font-family: Aleo, sans-serif;
+  font-size: 1em;
+  text-shadow: 5px 3px 0px rgba(6, 6, 6, 0.75);
+  z-index: 2;
 }
