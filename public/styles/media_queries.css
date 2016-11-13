@@ -12,7 +12,9 @@
   .info {
     font-size: 1.8em;
   }
-
+  .Saturn.wrap h1 {
+    margin-top: 0;
+  }
 }
 
 @media (min-width: 700px) and (max-width: 800px) {

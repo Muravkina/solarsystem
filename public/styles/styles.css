@@ -131,6 +131,10 @@ section.front_card .scrolling_direction p{
   z-index: 2;
 }
 
+#root {
+  overflow: hidden;
+}
+
 #root, .solar_system_wrap{
   display: inline-block;
   width: 99999999px;
@@ -216,6 +220,7 @@ section.front_card .scrolling_direction p{
 
 .Jupiter.planet, .planet_info_wrap.Jupiter  {
   top: 6%;
+  height: 100%;
 }
 
 .Saturn img, .Jupiter img, .Sun img {
@@ -379,6 +384,10 @@ section.front_card .scrolling_direction p{
   margin-top: 4%;
 }
 
+.Saturn.wrap {
+  height: 260.000px !important;
+}
+
 /*MEAUSREMENTS*/
 
 .scale {
@@ -488,7 +497,10 @@ section.front_card .scrolling_direction p{
   left: 3700px;
   top: 40%;
   transition: transform 0 ease-in;
-  /*transform: translateY(-50%);*/
+}
+
+.Jupiter .info {
+  top: 30%;
 }
 
 
