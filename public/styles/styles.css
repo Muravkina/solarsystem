@@ -418,6 +418,7 @@ section.front_card .scrolling_direction p{
 
 .info {
   position: absolute;
+  left: 40em;
 }
 .info.false {
   display: none;

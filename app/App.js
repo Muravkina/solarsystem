@@ -146,8 +146,8 @@ class Solar extends Component {
   
     var rect = planetNode.getBoundingClientRect();
 
-    return rect.left >=80 &&
-           rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    return rect.left >=-400 &&
+           rect.right <= 600
   }
 
   calculateTimeTravel(targetPlanet) {
@@ -188,15 +188,19 @@ class Solar extends Component {
   render() {
     var planetList = [];
 
+
     var planets = solarSystem.map((planet , i) => {
 
+      var divStyle = {
+        //200 - arbitrary coeffcient to scale the width and distances;
+        left: this.calculateDistanceBetweenPlanets(planet)
+      }
       //add planet's name to the array
       planetList.push(planet.name);
 
       return (
-        <div className={"planet_info_wrap " + planet.name }>
+        <div className={"planet_info_wrap " + planet.name } style={divStyle}>
           <Planet key={i} planet={planet} weight={this.state.weight}
-                  marginLeft={this.calculateDistanceBetweenPlanets(planet)}
                   ref={planet.name}  />
           <Info ref={planet.name + "_info"} visible={planet.name === this.visiblePlanet} planet={planet}/>
         </div>
@@ -223,14 +227,9 @@ class Planet extends Component {
 
   render() {
 
-    var divStyle = {
-      //200 - arbitrary coeffcient to scale the width and distances;
-      left: this.props.marginLeft
-    }
-
     return (
 
-      <div className={`planet ${this.props.planet.name}`} style={divStyle}>
+      <div className={`planet ${this.props.planet.name}`}>
 
         { this.props.weight > 0 ? <WeightOnPlanet weight={this.props.weight} planet={this.props.planet} /> : null }
 
