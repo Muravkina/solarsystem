@@ -146,8 +146,6 @@ class Solar extends Component {
     
     var rect = planetNode.getBoundingClientRect();
     if(el.props.planet.name === 'Sun') {
-      console.log(rect.right)
-      console.log(rect.left)
       return rect.right >= 200 && rect.right <= 1340
     }
     return rect.left >=-1300 && rect.right <= 500
@@ -156,7 +154,8 @@ class Solar extends Component {
   calculateTimeTravel(targetPlanet) {
 
     //calculate travel time from current point to athe panet
-    var travelTime = Math.abs(targetPlanet.distanceFromSun / 200 - window.pageXOffset) / 300;
+    var travelTime = Math.abs(targetPlanet.distanceFromSun / 200 - window.pageXOffset) / 400;
+    console.log(travelTime)
 
     // if time travel is too short
     travelTime = travelTime < 300 ? 300 : travelTime;

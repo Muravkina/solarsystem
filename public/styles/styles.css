@@ -473,34 +473,31 @@ section.front_card .scrolling_direction p{
   display: inline-block; 
   width: 30em;
   transition: opacity 0.5s ease-in;
-  vertical-align: middle;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .info.false {
   opacity: 0
 }
 
-.info.true {  
+.info.true p {
+  margin: 0;
+  white-space: normal;
   -webkit-animation: blurFadeIn 1s ease-in backwards;
   -moz-animation: blurFadeInt 1s ease-in backwards;
   -ms-animation: blurFadeIn 1s ease-in backwards;
   animation: blurFadeIn 1s ease-in backwards;
 }
 
-.info p {
-  margin: 0;
-  white-space: normal;
-}
-
 .Sun .info {
   position: absolute;
   left: 3700px;
-  top: 40%;
-  transition: transform 0 ease-in;
 }
 
-.Jupiter .info {
+.Jupiter.planet, .planet_info_wrap.Jupiter .info{
   top: 30%;
+  transform: translateY(-30%);
 }
 
 
