@@ -4,7 +4,8 @@ var sun = {
 	diameter: 864938,
 	distanceFromSun: 0,
 	travelTime: 0,
-	gravitationalFactor: 27.9
+	gravitationalFactor: 27.9,
+	notes: 'Eventually, the Sun will consume the Earth. When all the Hydrogen has been burned, the Sun will continue for about 130 million more years, burning Helium, during which time it will expand to the point that it will engulf Mercury and Venus and the Earth. At this stage it will have become a red giant'
 }
 
 // diameter, distance from Sun  - in miles

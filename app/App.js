@@ -143,9 +143,13 @@ class Solar extends Component {
   isElementInViewport(el) {
     //calculate if element is displayed in viewport
     var planetNode = findDOMNode(el)
-  
+    
     var rect = planetNode.getBoundingClientRect();
-
+    if(el.props.planet.name === 'Sun') {
+      console.log(rect.right)
+      console.log(rect.left)
+      return rect.right >= 200 && rect.right <= 1340
+    }
     return rect.left >=-1300 && rect.right <= 500
   }
 

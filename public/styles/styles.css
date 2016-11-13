@@ -462,7 +462,6 @@ section.front_card .scrolling_direction p{
   text-align: left;
   font-size: 1em;
   display: inline-block; 
-  background: rgb(20,20,20);
   width: 30em;
   transition: opacity 0.5s ease-in;
   vertical-align: middle;
@@ -477,12 +476,19 @@ section.front_card .scrolling_direction p{
   -moz-animation: blurFadeInt 1s ease-in backwards;
   -ms-animation: blurFadeIn 1s ease-in backwards;
   animation: blurFadeIn 1s ease-in backwards;
-  
 }
 
 .info p {
   margin: 0;
   white-space: normal;
+}
+
+.Sun .info {
+  position: absolute;
+  left: 3700px;
+  top: 40%;
+  transition: transform 0 ease-in;
+  /*transform: translateY(-50%);*/
 }
 
 

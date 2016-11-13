@@ -9,6 +9,9 @@
   section.front_card {
     font-size: 16px;
   }
+  .info {
+    font-size: 1.8em;
+  }
 
 }
 
@@ -21,6 +24,9 @@
   section.front_card {
     font-size: 19px;
   }
+  .info {
+    font-size: 1.5em;
+  }
 
 }
 
@@ -28,6 +34,9 @@
 
   body {
     font-size: 13px;
+  }
+  .info {
+    font-size: 1.5em;
   }
 
 }
@@ -40,6 +49,10 @@
 
   section.front_card {
     font-size: 22px;
+  }
+
+  .info {
+    font-size: 1.5em;
   }
 
 }
