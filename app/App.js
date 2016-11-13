@@ -146,8 +146,7 @@ class Solar extends Component {
   
     var rect = planetNode.getBoundingClientRect();
 
-    return rect.left >=-400 &&
-           rect.right <= 600
+    return rect.left >=-1300 && rect.right <= 500
   }
 
   calculateTimeTravel(targetPlanet) {
@@ -414,11 +413,13 @@ class Info extends Component {
   render() {
     return(
       <div className={`info ${this.props.visible}`}>
-        <p>bla</p>
+        <p>{this.props.planet.notes}</p>
       </div>
     )
   }
 }
+
+
 
 
 render(<Solar />, document.getElementById('root'));
