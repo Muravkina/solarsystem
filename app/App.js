@@ -43,8 +43,8 @@ class Solar extends Component {
   componentDidMount() {
     //find all planet DOM nodes
     this.planetRefs = this.findAllPlanetRefs();
-    window.addEventListener('scroll', this.handleScroll.bind(this));
     window.addEventListener('mousewheel', this.scrollRight.bind(this));
+    window.addEventListener('scroll', this.handleScroll.bind(this));
     this.setState({
       startingPoint: this.calculateStartingPoint()
     })
