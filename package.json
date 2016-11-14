@@ -1,12 +1,11 @@
 {
   "name": "solar",
   "version": "0.1.4",
-  "description": "React application boilerplate",
-  "author": "Cássio Zen",
-  "license": "ISC",
+  "description": "Solar system",
+  "author": "Dasha Murauyova",
   "scripts": {
-    "start": "webpack-dev-server --progress --port 8080 --host 192.168.0.8",
-    "build": "NODE_ENV=production node_modules/.bin/webpack -p --progress --colors"
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "build": "NODE_ENV=production node server.js -p --progress --colors"
   },
   "devDependencies": {
     "babel-core": "~6.7.*",
