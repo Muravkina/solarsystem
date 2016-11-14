@@ -3,9 +3,10 @@
   "version": "0.1.4",
   "description": "Solar system",
   "author": "Dasha Murauyova",
+  "license": "ISC",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "build": "NODE_ENV=production node server.js -p --progress --colors"
+    "start": "node server.js",
+    "build": "NODE_ENV=production node_modules/.bin/webpack -p --progress --colors"
   },
   "devDependencies": {
     "babel-core": "~6.7.*",
