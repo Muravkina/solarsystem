@@ -8,7 +8,8 @@ var config = {
   entry:  __dirname + "/app/App.js",
   output: {
     path: __dirname + "/public",
-    filename: "bundle.js"
+    filename: "bundle.js",
+    publicPath: '/solarsystem/'
   },
   module: {
     loaders: [{
