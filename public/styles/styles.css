@@ -42,8 +42,6 @@
 }
 
 
-
-
 /*BODY*/
 body {
   width: 99999999px;
@@ -85,9 +83,8 @@ section.front_card {
   position: relative;
   display: inline-block;
   font-family: Mohave, sans-serif;
-  font-size: 20px;
+  font-size: 1.3em;
   z-index: 1;
-  top: 5%;
 }
 
 section.front_card h1 {
@@ -466,19 +463,16 @@ section.front_card .scrolling_direction p{
 .info {
   font-family: 'Lato', sans-serif;
   position: relative;
-  left: 30em;
+  left: 15em;
   white-space: normal;
   text-align: left;
   font-size: 1em;
   display: inline-block; 
-  width: 30em;
-  top: 50%;
-  transform: translateY(-50%);
+  width: 25em;
 }
 
 .info p {
   margin: 0;
-  white-space: normal;
 }
 
 .info.false p{
@@ -496,6 +490,9 @@ section.front_card .scrolling_direction p{
 .Sun .info {
   position: absolute;
   left: 3700px;
+  top: 50%;
+  transform: translateY(-50%);
+}
 }
 
 .Jupiter.planet, .planet_info_wrap.Jupiter .info{

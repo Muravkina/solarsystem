@@ -5,10 +5,6 @@
   body {
     font-size: 9px;
   }
-
-  section.front_card {
-    font-size: 16px;
-  }
   .info {
     font-size: 1.8em;
   }
@@ -23,9 +19,6 @@
     font-size: 11px;
   }
 
-  section.front_card {
-    font-size: 19px;
-  }
   .info {
     font-size: 1.5em;
   }
@@ -49,10 +42,6 @@
     font-size: 15px;
   }
 
-  section.front_card {
-    font-size: 22px;
-  }
-
   .info {
     font-size: 1.5em;
   }
@@ -65,8 +54,9 @@
   }
 
   section.front_card {
-    font-size: 24px;
+    font-size: 1.1em;
   }
+
 }
 
 @media (min-width: 1401px) and (max-width: 3000px) {
@@ -75,6 +65,7 @@
   }
 
   section.front_card {
-    font-size: 22px;
+    font-size: 1em;
   }
+
 }

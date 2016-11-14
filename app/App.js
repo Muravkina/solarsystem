@@ -29,11 +29,22 @@ class Solar extends Component {
     return planetRefs;
   }
 
+  scrollRight(e) {
+
+    if( Math.abs(e.deltaX) ) {
+        return
+    } else {
+        document.body.scrollLeft -= (e.deltaY * 10);
+    }
+
+    e.preventDefault();
+  }
+
   componentDidMount() {
     //find all planet DOM nodes
     this.planetRefs = this.findAllPlanetRefs();
-
     window.addEventListener('scroll', this.handleScroll.bind(this));
+    window.addEventListener('mousewheel', this.scrollRight.bind(this));
     this.setState({
       startingPoint: this.calculateStartingPoint()
     })
@@ -41,6 +52,7 @@ class Solar extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll.bind(this));
+    window.removeEventListener('mousewheel', this.scrollRight.bind(this));
   }
 
   calculateStartingPoint() {
@@ -140,15 +152,29 @@ class Solar extends Component {
     }
   }
 
+  getBrowserWidth(){
+    if (self.innerWidth) {
+      return self.innerWidth;
+    }
+
+    if (document.documentElement && document.documentElement.clientWidth) {
+      return document.documentElement.clientWidth;
+    }
+
+    if (document.body) {
+      return document.body.clientWidth;
+    }
+  }
+
   isElementInViewport(el) {
     //calculate if element is displayed in viewport
     var planetNode = findDOMNode(el)
-    
     var rect = planetNode.getBoundingClientRect();
     if(el.props.planet.name === 'Sun') {
-      return rect.right >= 200 && rect.right <= 1340
+      return rect.right >= (this.getBrowserWidth() * 0.017) && rect.right <= 1340
     }
-    return rect.left >=-1300 && rect.right <= 500
+    // console.log(rect.left)
+    return rect.left >=-1300 && rect.left <= 100
   }
 
   calculateTimeTravel(targetPlanet) {
@@ -207,7 +233,9 @@ class Solar extends Component {
           <Info ref={planet.name + "_info"} visible={planet.name === this.visiblePlanet} planet={planet}/>
         </div>
       )
+
     })
+
     return(
           // show navigation and distance widget at start point
       <div>
@@ -217,9 +245,10 @@ class Solar extends Component {
                                                               distanceTraveled={this.state.distanceTraveled}/> : null }
           { this.state.distanceTraveled > 0 ? <WeightWidget   changeWeight={this.changeWeight.bind(this)}
                                                               weight={this.state.weight} /> : null }
-          <div className='solar_system_wrap' onScroll={this.handleScroll.bind(this)}>{planets}</div>
+          <div className='solar_system_wrap' onScroll={this.handleScroll.bind(this)} >{planets}</div>
       </div>
     );
+
   }
 
 }
