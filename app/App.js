@@ -268,7 +268,7 @@ class Planet extends Component {
 
         <h1>{this.props.planet.name}</h1>
 
-        <img src="images/arrow.png" alt="arrow"/>
+        <img src="../public/images/arrow.png" alt="arrow"/>
 
         <Image planet={this.props.planet} />
 
@@ -296,7 +296,7 @@ class WeightWidget extends Component {
   render() {
     return (
       <div className="weight_widget">
-        <div className="weights"><img src="images/scale.png" alt="scale" onClick={this.showInstructions.bind(this)}/> </div>
+        <div className="weights"><img src="../public/images/scale.png" alt="scale" onClick={this.showInstructions.bind(this)}/> </div>
 
         {this.state.showInstructions
             ?
@@ -403,7 +403,7 @@ class Image extends Component {
     var divStyle = {
       width: this.props.planet.diameter / 200,
       height: this.props.planet.diameter / 200,
-      backgroundImage: `url(images/${this.props.planet.name}.png)`
+      backgroundImage: `url(../public/images/${this.props.planet.name}.png)`
     }
     return (
       <div className={`${this.props.planet.name} wrap`} style={divStyle}></div>
