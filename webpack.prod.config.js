@@ -40,9 +40,16 @@ module.exports = {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract('style', 'css-loader!postcss-loader')
     },{
-      test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.otf$|\.ttf$|\.wav$|\.mp3$/,
-      loader: "file-loader"
-    },{
+    test: /\.(jpg|jpeg|gif|png)$/,
+    exclude: /node_modules/,
+    loader:'url-loader?limit=1024&name=images/[name].[ext]'
+  },
+  {
+    test: /\.(otf|ttf)$/,
+    exclude: /node_modules/,
+    loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
+},
+  {
       test: /\.css$/,
       loader: 'postcss-loader'
     }]
