@@ -1,4 +1,4 @@
-npm buildvar webpack = require('webpack');
+var webpack = require('webpack');
 
 /*
  * Default webpack configuration for development
@@ -34,7 +34,7 @@ var config = {
     colors: true,
     historyApiFallback: true,
     inline: true
-  },
+  }
 }
 
 /*
