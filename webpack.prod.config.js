@@ -31,6 +31,15 @@ module.exports = {
       query: {
         presets: ['es2015','react']
       }
+    },{
+      test: /\.css$/,
+      loader: "style-loader!css-loader"
+    }, { test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.otf$|\.ttf$|\.wav$|\.mp3$/, loader: "file-loader" }, {
+      test: /\.css$/,
+      loader: 'postcss-loader'
     }]
-}
+  },
+  postcss: [
+    require('autoprefixer')
+  ]
 };

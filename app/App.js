@@ -4,6 +4,9 @@ import solarSystem from '../data/solar_system.js';
 import scrollTo from 'scroll-into-view';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
+import styles from '../public/styles/styles.css'
+import media_queries from '../public/styles/media_queries.css';
+
 
 
 class Solar extends Component {
@@ -62,7 +65,7 @@ class Solar extends Component {
     var windowCenter = this.getBrowserCenter();
 
     var centerX = (sun.offsetWidth  / 2 + sunLeft) - windowCenter;
-    
+
     return centerX;
   }
 
@@ -140,14 +143,14 @@ class Solar extends Component {
 
   whatElementIsInViewport() {
     //what planet is visible at the moment
-        
+
     var planet = this.planetRefs.filter(function(planet){
       if (this.isElementInViewport(planet) === true) {
         return planet;
       }
     }, this)
 
-    if(planet.length !== 0) { 
+    if(planet.length !== 0) {
       return planet[0].props.planet.name;
     }
   }

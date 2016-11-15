@@ -467,7 +467,7 @@ section.front_card .scrolling_direction p{
   white-space: normal;
   text-align: left;
   font-size: 1em;
-  display: inline-block; 
+  display: inline-block;
   width: 25em;
 }
 
@@ -493,7 +493,7 @@ section.front_card .scrolling_direction p{
   top: 50%;
   transform: translateY(-50%);
 }
-}
+
 
 .Jupiter.planet, .planet_info_wrap.Jupiter .info{
   top: 30%;
