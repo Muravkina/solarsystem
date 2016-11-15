@@ -6,7 +6,8 @@ module.exports = {
     entry:  __dirname + "/app/App.js",
     output: {
         path: __dirname + '/dist',
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: './public/'
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
@@ -34,7 +35,10 @@ module.exports = {
     },{
       test: /\.css$/,
       loader: "style-loader!css-loader"
-    }, { test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.otf$|\.ttf$|\.wav$|\.mp3$/, loader: "file-loader" }, {
+    }, {
+      test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.otf$|\.ttf$|\.wav$|\.mp3$/,
+      loader: "file-loader"
+    },{
       test: /\.css$/,
       loader: 'postcss-loader'
     }]

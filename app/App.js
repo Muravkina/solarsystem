@@ -8,7 +8,6 @@ import styles from '../public/styles/styles.css'
 import media_queries from '../public/styles/media_queries.css';
 
 
-
 class Solar extends Component {
 
   constructor(){
