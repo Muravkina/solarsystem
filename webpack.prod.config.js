@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
     devtool: 'source-map',
@@ -12,6 +13,7 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
+        new ExtractTextPlugin('style.css'),
         new webpack.optimize.UglifyJsPlugin({
             compressor: {
                 warnings: false
@@ -34,7 +36,7 @@ module.exports = {
       }
     },{
       test: /\.css$/,
-      loader: "style-loader!css-loader"
+      loader: ExtractTextPlugin.extract('style', 'css?modules!postcss')
     }, {
       test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.otf$|\.ttf$|\.wav$|\.mp3$/,
       loader: "file-loader"
