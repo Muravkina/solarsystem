@@ -4,7 +4,7 @@ import solarSystem from '../data/solar_system.js';
 import scrollTo from 'scroll-into-view';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import styles from '../public/styles/styles.css'
+import style from '../public/styles/styles.css'
 import media_queries from '../public/styles/media_queries.css';
 
 

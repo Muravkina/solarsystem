@@ -13,7 +13,7 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('style.css', {
+        new ExtractTextPlugin('./public/style.css', {
           allChunks: true
         }),
         new webpack.optimize.UglifyJsPlugin({
