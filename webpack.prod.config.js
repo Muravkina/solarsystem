@@ -39,20 +39,21 @@ module.exports = {
     },{
       test: /\.css$/,
       loader: ExtractTextPlugin.extract('style', 'css-loader!postcss-loader')
-    },{
-    test: /\.(jpg|jpeg|gif|png)$/,
-    exclude: /node_modules/,
-    loader:'url-loader?limit=1024&name=images/[name].[ext]'
-  },
-  {
-    test: /\.(otf|ttf)$/,
-    exclude: /node_modules/,
-    loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
-},
-  {
-      test: /\.css$/,
-      loader: 'postcss-loader'
-    }]
+    },
+      // Image URL config. Generate data URI's for images smaller than 10,000 bytes
+      {test: /\.(png|gif|jpe?g|svg)$/i, loader: 'url?limit=10000'},
+
+      // Image file config. Generate hashed file names to make them easy to cache.
+      {
+        test: /\.(png|gif|jpe?g|svg)$/i,
+        loader: 'file?hash=sha512&digest=hex&name=[path][name]-[hash].[ext]'
+      },
+
+      // Inline font files smaller than 10000 bytes
+      { test: /\.(woff2?|otf|eot|svg)$/, loader: 'url?limit=10000' },
+
+      // File loader for fonts larger than 10000 bytes.
+      { test: /\.(woff2?|otf|eot|svg)$/, loader: 'file?name=[name].[ext]' }]
   },
   postcss: [
     require('autoprefixer')
