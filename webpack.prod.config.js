@@ -13,7 +13,9 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('style.css'),
+        new ExtractTextPlugin('style.css', {
+          allChunks: true
+        }),
         new webpack.optimize.UglifyJsPlugin({
             compressor: {
                 warnings: false
@@ -36,8 +38,8 @@ module.exports = {
       }
     },{
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract('style', 'css?modules!postcss')
-    }, {
+      loader: ExtractTextPlugin.extract('style', 'css-loader!postcss-loader')
+    },{
       test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.otf$|\.ttf$|\.wav$|\.mp3$/,
       loader: "file-loader"
     },{
