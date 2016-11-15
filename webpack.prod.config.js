@@ -5,11 +5,12 @@ module.exports = {
     devtool: 'source-map',
     entry:  __dirname + "/app/App.js",
     output: {
-        path: __dirname + 'dist',
+        path: __dirname + '/dist',
         filename: 'bundle.js'
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compressor: {
                 warnings: false
@@ -40,5 +41,11 @@ module.exports = {
   },
   postcss: [
     require('autoprefixer')
-  ]
+  ],
+   devServer: {
+    contentBase: "./public",
+    colors: true,
+    historyApiFallback: true,
+    inline: true
+  },
 };
