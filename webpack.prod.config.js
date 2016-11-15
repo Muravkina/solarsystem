@@ -53,7 +53,7 @@ module.exports = {
       { test: /\.(woff2?|otf|eot|svg)$/, loader: 'url?limit=10000' },
 
       // File loader for fonts larger than 10000 bytes.
-      { test: /\.(woff2?|otf|eot|svg)$/, loader: 'file?name=[name].[ext]' }]
+      { test: /\.(woff2?|otf|eot|svg)$/, loader: 'file?name=[path][name]-[name].[ext]' }]
   },
   postcss: [
     require('autoprefixer')
