@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+npm buildvar webpack = require('webpack');
 
 /*
  * Default webpack configuration for development
