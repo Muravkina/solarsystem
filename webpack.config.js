@@ -9,7 +9,7 @@ var config = {
   output: {
     path: __dirname + "/public",
     filename: "bundle.js",
-    publicPath: '/solarsystem/'
+    publicPath: __dirname + '/solarsystem/'
   },
   module: {
     loaders: [{
