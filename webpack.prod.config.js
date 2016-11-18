@@ -8,7 +8,7 @@ module.exports = {
     output: {
         path: __dirname + '/dist',
         filename: 'bundle.js',
-        publicPath:'/solarsystem/dist',
+        publicPath:'/solarsystem/dist/',
 
     },
     plugins: [
