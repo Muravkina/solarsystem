@@ -4,7 +4,7 @@ import solarSystem from '../data/solar_system.js';
 import scrollTo from 'scroll-into-view';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import style from '../public/styles/styles.css'
+import styles from '../public/styles/styles.css'
 
 
 class Solar extends Component {
@@ -42,6 +42,7 @@ class Solar extends Component {
   }
 
   componentDidMount() {
+
     //find all planet DOM nodes
     this.planetRefs = this.findAllPlanetRefs();
     window.addEventListener('mousewheel', this.scrollRight.bind(this));

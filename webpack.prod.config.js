@@ -38,8 +38,7 @@ module.exports = {
       }
     },{
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract('style', 'css-loader!postcss-loader'),
-       include: __dirname + '/public/styles'
+      loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
     },
       // Image URL config. Generate data URI's for images smaller than 10,000 bytes
       {test: /\.(png|gif|jpe?g|svg)$/i, loader: 'url'},
