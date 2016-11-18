@@ -408,8 +408,6 @@ class Image extends Component {
       height: this.props.planet.diameter / 200,
       backgroundImage: `url(./public/images/${this.props.planet.name}.png)`
     }
-
-    this.getPlanetImage(this.props.planet.name)
     return (
       <div className={`${this.props.planet.name} wrap`} style={divStyle}></div>
     );
