@@ -5,7 +5,7 @@ import scrollTo from 'scroll-into-view';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import styles from '../public/styles/styles.css';
-var requireContext = require.context("../public/images", true, /^\.\/.*\.jpg$/);
+var requireContext = require.context("../public/images/", true, /^\.\/.*\.png$/);
 
 
 
@@ -44,8 +44,7 @@ class Solar extends Component {
   }
 
   componentDidMount() {
-    console.log(requireContext.keys())
-    requireContext.keys().map((planet , i) => {console.log(planet)})
+    
     //find all planet DOM nodes
     this.planetRefs = this.findAllPlanetRefs();
     window.addEventListener('mousewheel', this.scrollRight.bind(this));
@@ -133,6 +132,7 @@ class Solar extends Component {
     }
   }
 
+
   handleScroll() {
     //change traveled distance in distance widget
     this.visiblePlanet = this.whatElementIsInViewport();
@@ -186,7 +186,6 @@ class Solar extends Component {
 
     //calculate travel time from current point to athe panet
     var travelTime = Math.abs(targetPlanet.distanceFromSun / 200 - window.pageXOffset) / 400;
-    console.log(travelTime)
 
     // if time travel is too short
     travelTime = travelTime < 300 ? 300 : travelTime;
@@ -400,14 +399,26 @@ class DistanceWidget extends Component {
 }
 
 class Image extends Component {
+  getPlanetImage(planetName) {
+    var planetImage;
+    requireContext.keys().map((planet , i) => {
+      if(planet.includes(planetName)){
+        planetImage = planet;
+      } 
+    })
+    return planetImage
+  }
 
   render() {
     //200 - arbitrary coeffcient to scale the width of the planets;
+    var planetImage = this.getPlanetImage(this.props.planet.name)
+    console.log(planetImage)
     var divStyle = {
       width: this.props.planet.diameter / 200,
       height: this.props.planet.diameter / 200,
-      backgroundImage: `url(../public/images/${this.props.planet.name}.png)`
+      backgroundImage: 'url(' + planetImage + ')'
     }
+
     return (
       <div className={`${this.props.planet.name} wrap`} style={divStyle}></div>
     );
