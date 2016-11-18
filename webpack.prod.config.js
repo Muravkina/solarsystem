@@ -14,7 +14,7 @@ module.exports = {
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin('style.css', {
-          allChunks: true
+          allChunks: false
         }),
         new webpack.optimize.UglifyJsPlugin({
             compressor: {
