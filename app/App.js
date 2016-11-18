@@ -5,7 +5,6 @@ import scrollTo from 'scroll-into-view';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import style from '../public/styles/styles.css'
-import media_queries from '../public/styles/media_queries.css';
 
 
 class Solar extends Component {

@@ -502,3 +502,73 @@ section.front_card .scrolling_direction p{
 
 
 
+
+@media (min-width: 600px) and (max-width: 700px) {
+
+  body {
+    font-size: 9px;
+  }
+  .info {
+    font-size: 1.8em;
+  }
+  .Saturn.wrap h1 {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 800px) {
+
+  body {
+    font-size: 11px;
+  }
+
+  .info {
+    font-size: 1.5em;
+  }
+
+}
+
+@media (min-width: 800px) and (max-width: 950px) {
+
+  body {
+    font-size: 13px;
+  }
+  .info {
+    font-size: 1.5em;
+  }
+
+}
+
+@media (min-width: 950px) and (max-width: 1200px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  .info {
+    font-size: 1.5em;
+  }
+
+}
+
+@media (min-width: 1201px) and (max-width: 1400px) {
+  body {
+    font-size: 19px;
+  }
+
+  section.front_card {
+    font-size: 1.1em;
+  }
+
+}
+
+@media (min-width: 1401px) and (max-width: 3000px) {
+  body {
+    font-size: 22px;
+  }
+
+  section.front_card {
+    font-size: 1em;
+  }
+
+}
