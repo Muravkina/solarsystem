@@ -399,26 +399,17 @@ class DistanceWidget extends Component {
 }
 
 class Image extends Component {
-  getPlanetImage(planetName) {
-    var planetImage;
-    requireContext.keys().map((planet , i) => {
-      if(planet.includes(planetName)){
-        planetImage = planet;
-      } 
-    })
-    return planetImage
-  }
+
 
   render() {
     //200 - arbitrary coeffcient to scale the width of the planets;
-    var planetImage = this.getPlanetImage(this.props.planet.name)
-    console.log(planetImage)
     var divStyle = {
       width: this.props.planet.diameter / 200,
       height: this.props.planet.diameter / 200,
-      backgroundImage: 'url(' + planetImage + ')'
+      backgroundImage: `url(./public/images/${this.props.planet.name}.png)`
     }
 
+    this.getPlanetImage(this.props.planet.name)
     return (
       <div className={`${this.props.planet.name} wrap`} style={divStyle}></div>
     );
