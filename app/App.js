@@ -44,7 +44,7 @@ class Solar extends Component {
   }
 
   componentDidMount() {
-    
+    console.log(requireContext.Sun)
     //find all planet DOM nodes
     this.planetRefs = this.findAllPlanetRefs();
     window.addEventListener('mousewheel', this.scrollRight.bind(this));
