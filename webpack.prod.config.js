@@ -7,11 +7,11 @@ module.exports = {
     entry:  __dirname + "/app/App.js",
     output: {
         path: __dirname + '/dist',
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath:__dirname + '../public'
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin('style.css', {
           allChunks: false
         }),
@@ -37,7 +37,7 @@ module.exports = {
       }
     },{
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+      loader: ExtractTextPlugin.extract('css-loader!postcss-loader')
     },
       // Image URL config. Generate data URI's for images smaller than 10,000 bytes
       {test: /\.(png|gif|jpe?g|svg)$/i, loader: 'url'},
@@ -56,11 +56,5 @@ module.exports = {
   },
   postcss: [
     require('autoprefixer')
-  ],
-   devServer: {
-    contentBase: "./dist",
-    colors: true,
-    historyApiFallback: true,
-    inline: true
-  },
+  ]
 };

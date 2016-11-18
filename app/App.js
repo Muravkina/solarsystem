@@ -4,7 +4,9 @@ import solarSystem from '../data/solar_system.js';
 import scrollTo from 'scroll-into-view';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import styles from '../public/styles/styles.css'
+import styles from '../public/styles/styles.css';
+var requireContext = require.context("../public/images", true, /^\.\/.*\.jpg$/);
+
 
 
 class Solar extends Component {
@@ -42,7 +44,8 @@ class Solar extends Component {
   }
 
   componentDidMount() {
-
+    console.log(requireContext.keys())
+    requireContext.keys().map((planet , i) => {console.log(planet)})
     //find all planet DOM nodes
     this.planetRefs = this.findAllPlanetRefs();
     window.addEventListener('mousewheel', this.scrollRight.bind(this));
