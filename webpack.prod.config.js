@@ -14,7 +14,7 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new ExtractTextPlugin('style.css', {
-          allChunks: false
+          allChunks: true
         }),
         new webpack.optimize.UglifyJsPlugin({
             compressor: {
@@ -43,7 +43,7 @@ module.exports = {
       // Image file config. Generate hashed file names to make them easy to cache.
       {
         test: /\.(png|gif|jpe?g|svg)$/i,
-        loader: 'file?hash=sha512&digest=hex&name=[path][name]-[hash].[ext]'
+        loader: 'file?hash=sha512&digest=hex&name=[path][name].[ext]'
       },
 
       // File loader for fonts larger than 10000 bytes.
