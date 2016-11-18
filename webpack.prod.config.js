@@ -8,12 +8,12 @@ module.exports = {
     output: {
         path: __dirname + '/dist',
         filename: 'bundle.js',
-        publicPath: './dist/'
+        publicPath: '/dist/'
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('./public/style.css', {
+        new ExtractTextPlugin('style.css', {
           allChunks: true
         }),
         new webpack.optimize.UglifyJsPlugin({
@@ -38,10 +38,11 @@ module.exports = {
       }
     },{
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract('style', 'css-loader!postcss-loader')
+      loader: ExtractTextPlugin.extract('style', 'css-loader!postcss-loader'),
+       include: __dirname + '/public/styles'
     },
       // Image URL config. Generate data URI's for images smaller than 10,000 bytes
-      {test: /\.(png|gif|jpe?g|svg)$/i, loader: 'url?limit=10000'},
+      {test: /\.(png|gif|jpe?g|svg)$/i, loader: 'url'},
 
       // Image file config. Generate hashed file names to make them easy to cache.
       {
@@ -59,7 +60,7 @@ module.exports = {
     require('autoprefixer')
   ],
    devServer: {
-    contentBase: "./public",
+    contentBase: "./dist",
     colors: true,
     historyApiFallback: true,
     inline: true

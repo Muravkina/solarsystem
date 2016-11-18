@@ -239,7 +239,7 @@ class Solar extends Component {
 
     return(
           // show navigation and distance widget at start point
-      <div style={style}>
+      <div>
           { this.state.distanceTraveled > 0 ? <PlanetsList    moveToPlanet={this.moveToPlanet.bind(this)}/> : null }
           { this.state.distanceTraveled > 0 ? <DistanceWidget currentMeasurement={this.state.currentMeasurement}
                                                               convertDistance={this.convertDistance.bind(this)}
