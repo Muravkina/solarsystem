@@ -44,7 +44,7 @@ class Solar extends Component {
   }
 
   componentDidMount() {
-    console.log(requireContext.Sun)
+    console.log(requireContext)
     //find all planet DOM nodes
     this.planetRefs = this.findAllPlanetRefs();
     window.addEventListener('mousewheel', this.scrollRight.bind(this));
@@ -153,6 +153,7 @@ class Solar extends Component {
     }, this)
 
     if(planet.length !== 0) {
+      console.log(planet[0].props.planet.name)
       return planet[0].props.planet.name;
     }
   }
