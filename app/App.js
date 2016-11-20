@@ -5,7 +5,7 @@ import scrollTo from 'scroll-into-view';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import styles from '../public/styles/styles.css';
-var requireContext = require.context("../public/images/", true, /^\.\/.*\.png$/);
+import favicon from '../public/images/solar.ico';
 
 
 

@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     devtool: 'source-map',
@@ -42,7 +42,7 @@ module.exports = {
     },
       // Image file config. Generate hashed file names to make them easy to cache.
       {
-        test: /\.(png|gif|jpe?g|svg)$/i,
+        test: /\.(png|gif|jpe?g|svg|ico)$/i,
         loader: 'file?hash=sha512&digest=hex&name=[path][name].[ext]'
       },
 
