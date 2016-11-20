@@ -22,7 +22,7 @@ var config = {
       test: /\.css$/,
       loader: "style-loader!css-loader"
     },       {
-        test: /\.(png|gif|jpe?g|svg)$/i,
+        test: /\.(png|gif|jpe?g|svg|ico)$/i,
         loader: 'file?hash=sha512&digest=hex&name=[path][name]-[hash].[ext]'
       },
 

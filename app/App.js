@@ -6,6 +6,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import styles from '../public/styles/styles.css';
 import favicon from '../public/images/solar.ico';
+
+
 var images = require.context("../public/images/", true, /^\.\/.*\.png$/);
 
 
@@ -402,14 +404,23 @@ class DistanceWidget extends Component {
 }
 
 class Image extends Component {
-
+  getImageURL(planet){
+    var image;
+    images.keys().forEach(function(img){
+      if(img.includes(planet)){
+        console.log(image)
+        image = img
+      }
+    })
+    return image;
+  }
 
   render() {
     //200 - arbitrary coeffcient to scale the width of the planets;
     var divStyle = {
       width: this.props.planet.diameter / 200,
       height: this.props.planet.diameter / 200,
-      backgroundImage: `url(./dist/public/images/${this.props.planet.name}.png)`
+      backgroundImage: `url(./dist/public/images/${this.getImageURL(this.props.planet.name)})`
     }
     return (
       <div className={`${this.props.planet.name} wrap`} style={divStyle}></div>
