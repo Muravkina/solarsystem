@@ -6,6 +6,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import styles from '../public/styles/styles.css';
 import favicon from '../public/images/solar.ico';
+var images = require.context("../public/images/", true, /^\.\/.*\.png$/);
 
 
 
