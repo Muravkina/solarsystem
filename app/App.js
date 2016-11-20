@@ -26,6 +26,7 @@ class Solar extends Component {
     var planetRefs = [];
 
     for (var ref in this.refs) {
+      console.log(this.refs)
       this.refs[ref].constructor.name === 'Planet' ? planetRefs.push(this.refs[ref]) : null
     }
 
@@ -145,8 +146,7 @@ class Solar extends Component {
 
   whatElementIsInViewport() {
     //what planet is visible at the moment
-
-    console.log(this.planetRefs)
+    
     var planet = this.planetRefs.filter(function(planet){
       if (this.isElementInViewport(planet) === true) {
         return planet;
