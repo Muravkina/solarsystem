@@ -177,12 +177,12 @@ class Solar extends Component {
     //calculate if element is displayed in viewport
     var planetNode = findDOMNode(el)
     var rect = planetNode.getBoundingClientRect();
-    console.log(rect)
+  
     if(el.props.planet.name === 'Sun') {
       return rect.right >= (this.getBrowserWidth() * 0.017) && rect.right <= 1340
     }
     // console.log(rect.left)
-    return rect.left >=-1300 && rect.left <= 100
+    return rect.left >=-1300 && rect.left <= 200
   }
 
   calculateTimeTravel(targetPlanet) {
