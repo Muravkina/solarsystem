@@ -146,13 +146,13 @@ class Solar extends Component {
   whatElementIsInViewport() {
     //what planet is visible at the moment
 
+    console.log(this.planetRefs)
     var planet = this.planetRefs.filter(function(planet){
       if (this.isElementInViewport(planet) === true) {
         return planet;
       }
     }, this)
 
-    console.log(planet)
 
     if(planet.length !== 0) {
       console.log(planet[0].props.planet.name)
