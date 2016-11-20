@@ -6,6 +6,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import styles from '../public/styles/styles.css';
 import favicon from '../public/images/solar.ico';
+import solar_icon from '../public/images/solar_icon.jpg';
 
 
 var images = require.context("../public/images/", true, /^\.\/.*\.png$/);
@@ -468,7 +469,6 @@ class Info extends Component {
     )
   }
 }
-
 
 
 
