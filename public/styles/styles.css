@@ -368,11 +368,12 @@ section.front_card .scrolling_direction p{
   font-family: 'Lato', sans-serif;;
   font-weight: bold;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
-  color: #a9a5a5;
+  color: white;
 }
 
 .Jupiter .description, .Sun .description {
-  top: 55%;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 4;
   margin-bottom: 2%;
 }
