@@ -26,7 +26,6 @@ class Solar extends Component {
     var planetRefs = [];
 
     for (var ref in this.refs) {
-      console.log(ref)
       !ref.includes('info') ? planetRefs.push(this.refs[ref]) : null
     }
 
