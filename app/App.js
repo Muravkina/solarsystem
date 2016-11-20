@@ -26,9 +26,7 @@ class Solar extends Component {
     var planetRefs = [];
 
     for (var ref in this.refs) {
-      console.log(this.refs[ref])
-      console.log(this.refs[ref].constructor)
-      this.refs[ref].constructor.name === 'Planet' ? planetRefs.push(this.refs[ref]) : null
+      !ref.includes('info') ? planetRefs.push(this.refs[ref]) : null
     }
 
     return planetRefs;
@@ -46,7 +44,7 @@ class Solar extends Component {
   }
 
   componentDidMount() {
-    console.log(requireContext)
+ 
     //find all planet DOM nodes
     this.planetRefs = this.findAllPlanetRefs();
     window.addEventListener('mousewheel', this.scrollRight.bind(this));
@@ -156,7 +154,6 @@ class Solar extends Component {
 
 
     if(planet.length !== 0) {
-      console.log(planet[0].props.planet.name)
       return planet[0].props.planet.name;
     }
   }
@@ -179,6 +176,7 @@ class Solar extends Component {
     //calculate if element is displayed in viewport
     var planetNode = findDOMNode(el)
     var rect = planetNode.getBoundingClientRect();
+    console.log(rect)
     if(el.props.planet.name === 'Sun') {
       return rect.right >= (this.getBrowserWidth() * 0.017) && rect.right <= 1340
     }
