@@ -152,6 +152,8 @@ class Solar extends Component {
       }
     }, this)
 
+    console.log(planet)
+
     if(planet.length !== 0) {
       console.log(planet[0].props.planet.name)
       return planet[0].props.planet.name;
