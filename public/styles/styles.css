@@ -496,7 +496,7 @@ section.front_card .scrolling_direction p{
 }
 
 
-.Jupiter.planet, .planet_info_wrap.Jupiter .info{
+.Jupiter.planet, .planet_info_wrap.Jupiter .info, .planet_info_wrap.Saturn .info{
   top: 30%;
   transform: translateY(-30%);
 }

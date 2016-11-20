@@ -408,7 +408,6 @@ class Image extends Component {
     var image;
     images.keys().forEach(function(img){
       if(img.includes(planet)){
-        console.log(image)
         image = img
       }
     })
