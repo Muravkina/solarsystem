@@ -1,9 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
-    devtool: 'source-map',
+    devtool: 'cheap-module-source-map',
     entry:  __dirname + "/app/App.js",
     output: {
         path: __dirname + '/dist',
@@ -17,6 +18,7 @@ module.exports = {
           allChunks: true
         }),
         new webpack.optimize.UglifyJsPlugin({
+            minimize: true,
             compressor: {
                 warnings: false
             }
@@ -25,6 +27,13 @@ module.exports = {
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
             }
+        }),
+        new CompressionPlugin({
+          asset: "[path].gz[query]",
+          algorithm: "gzip",
+          test: /\.js$|\.css$|\.html$|\.png$|\.jpg$/,
+          threshold: 10240,
+          minRatio: 0.8
         })
     ],
 
