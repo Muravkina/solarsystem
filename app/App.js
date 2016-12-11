@@ -5,6 +5,7 @@ import scrollTo from 'scroll-into-view';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import styles from '../public/styles/styles.css';
+import marking_full from '../public/images/markings_full.png';
 import favicon from '../public/images/solar.ico';
 import solar_icon from '../public/images/solar_icon.jpg';
 
