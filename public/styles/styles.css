@@ -231,7 +231,7 @@ section.front_card .scrolling_direction p{
   background-image: url(./../images/Sun.png);
 }
 .Earth.wrap {
-  background-image: url(./../images/Earth.png);
+  background-image: url(./../images/Earth.svg);
 }
 .Jupiter.wrap {
   background-image: url(./../images/Jupiter.png);

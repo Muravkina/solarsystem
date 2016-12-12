@@ -15,7 +15,7 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
         new ExtractTextPlugin('style.css', {
-          allChunks: true
+          allChunks: false
         }),
         new webpack.optimize.UglifyJsPlugin({
             minimize: true,
@@ -56,7 +56,7 @@ module.exports = {
       },
 
       // File loader for fonts larger than 10000 bytes.
-      { test: /\.(woff2?|otf|eot|svg)$/, loader: 'file?name=[path][name]-[name].[ext]' }]
+      { test: /\.(woff2?|otf|eot)$/, loader: 'file?name=[path][name]-[name].[ext]' }]
   },
   postcss: [
     require('autoprefixer')
