@@ -7,10 +7,10 @@ module.exports = {
     devtool: 'cheap-module-source-map',
     entry:  __dirname + "/app/App.js",
     output: {
-        path: __dirname + '/dist',
-        filename: 'bundle.js',
-        publicPath:'/solarsystem/dist/',
-
+        path: path.join(__dirname, "dist", "[hash]"),
+        filename: 'bundle.[hash].js',
+        publicPath:'/solarsystem/dist/[hash]/',
+        chunkFilename: "[id].[hash].bundle.js"
     },
     plugins: [
         new webpack.optimize.OccurenceOrderPlugin(),
